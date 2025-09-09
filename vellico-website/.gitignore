@@ -80,3 +80,8 @@ temp/
 # Build directories
 dist/
 build/
+
+# Cloudflare Tunnel binaries and packages
+cloudflared
+cloudflared.deb
+cloudflared-extract/

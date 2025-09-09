@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 3060; // Safe port not in use
+const PORT = process.env.PORT || 3060; // Use environment port or default
 
 // Set EJS as template engine
 app.set('view engine', 'ejs');

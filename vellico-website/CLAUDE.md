@@ -11,21 +11,31 @@ npm start
 # 서버가 http://localhost:3060 에서 실행됩니다
 ```
 
-### 2. 관리자 패널 - 파일 업로드
-- URL: `http://localhost:3060/admin`
-- 기능: Google Drive "새 폴더"의 이미지들을 수동으로 업로드
-- 지원 형식: JPG, PNG, GIF, WEBP (최대 10MB per file, 동시 10개 파일)
-- 업로드된 이미지는 자동으로 메인 웹사이트의 "최신 업로드" 섹션에 표시됩니다
+### 2. 향상된 관리자 패널 - 완전한 파일 관리 시스템
+- **URL**: `http://localhost:3060/admin`
+- **기능**: Google Drive "새 폴더"의 이미지들을 효율적으로 관리
+- **지원 형식**: JPG, PNG, GIF, WEBP (최대 10MB per file, 동시 10개 파일)
+- **새로운 기능들**:
+  - ✅ **드래그앤드롭 업로드**: 직관적인 파일 업로드
+  - ✅ **일괄 선택/삭제**: 체크박스로 여러 파일 동시 관리
+  - ✅ **개별 파일 삭제**: 호버 시 나타나는 삭제 버튼
+  - ✅ **이미지 미리보기**: 클릭하면 풀사이즈 모달로 보기
+  - ✅ **Google Drive 가이드**: 단계별 다운로드 안내
+  - ✅ **실시간 진행률**: 업로드 상태 시각적 표시
+  - ✅ **반응형 디자인**: 모바일/태블릿 최적화
 
 ### 3. API 엔드포인트
 - `GET /api/new-folder-files`: 업로드된 파일 목록 조회
 - `POST /upload`: 파일 업로드 (multipart/form-data)
+- `DELETE /api/delete-file/:filename`: 개별 파일 삭제
+- `POST /api/delete-files`: 다중 파일 배치 삭제
 - `GET /api/stats`: 실시간 통계 데이터
 - `POST /contact`: 고객 문의 접수
 
 ### 4. 실시간 기능
 - 고객 만족도 통계 (30초마다 자동 갱신)
 - 새 폴더 업로드 이미지 (1분마다 자동 갱신)
+- 동적 파일 관리 및 즉시 반영
 
 ## Google Drive 연동 대안책
 원래 Google Drive API 자동 연동을 시도했으나 네트워크 문제로 인해 수동 업로드 방식으로 대체했습니다.

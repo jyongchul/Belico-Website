@@ -291,6 +291,257 @@
             opacity: 0.7;
             pointer-events: none;
         }
+
+        /* Google Drive 가이드 섹션 */
+        .guide-section {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .guide-section h3 {
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .guide-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .guide-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            background: #2c5aa0;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .step-text a {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .step-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* 파일 관리 컨트롤 */
+        .file-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .uploaded-files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .uploaded-file {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .file-checkbox {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .file-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .uploaded-file:hover .file-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        .action-btn.delete {
+            background: rgba(255, 71, 87, 0.9);
+        }
+
+        .action-btn.delete:hover {
+            background: #ff4757;
+        }
+
+        /* 이미지 미리보기 모달 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .modal-info h4 {
+            color: #2c5aa0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .modal-info p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* 선택된 파일 스타일 */
+        .uploaded-file.selected {
+            border: 3px solid #2c5aa0;
+            transform: scale(0.98);
+        }
+
+        .uploaded-file.selected::before {
+            content: '✓';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #2c5aa0;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 15;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .guide-content {
+                gap: 20px;
+            }
+
+            .guide-step {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .file-controls {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .uploaded-files-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .modal-content {
+                margin: 20px;
+                max-width: calc(100vw - 40px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -331,13 +582,57 @@
             <div id="statusMessage"></div>
         </div>
 
+        <!-- Google Drive 가이드 섹션 -->
+        <div class="guide-section">
+            <h3>📋 Google Drive 사용 가이드</h3>
+            <div class="guide-content">
+                <div class="guide-step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <strong>Google Drive 접속:</strong> 
+                        <a href="https://drive.google.com" target="_blank">drive.google.com</a>에서 "새 폴더"로 이동
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <strong>파일 다운로드:</strong> 
+                        Ctrl+A로 모든 파일 선택 → 우클릭 → "다운로드"
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <strong>파일 업로드:</strong> 
+                        다운로드된 ZIP을 압축해제하고 위의 업로드 영역에 드래그앤드롭
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="uploaded-files-section">
             <div class="uploaded-files-header">
                 <h3>업로드된 파일들</h3>
-                <button class="btn btn-secondary" onclick="loadUploadedFiles()">새로고침</button>
+                <div class="file-controls">
+                    <button class="btn btn-secondary" onclick="selectAll()" id="selectAllBtn">전체 선택</button>
+                    <button class="btn" style="background: #ff4757; color: white;" onclick="deleteSelected()" id="deleteBtn" disabled>선택 삭제</button>
+                    <button class="btn btn-secondary" onclick="loadUploadedFiles()">새로고침</button>
+                </div>
             </div>
             <div class="uploaded-files-grid" id="uploadedFilesGrid">
                 <!-- 업로드된 파일들이 여기에 표시됩니다 -->
+            </div>
+        </div>
+
+        <!-- 이미지 미리보기 모달 -->
+        <div class="modal" id="imageModal" onclick="closeModal()">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <img id="modalImage" alt="이미지 미리보기">
+                <div class="modal-info">
+                    <h4 id="modalTitle"></h4>
+                    <p id="modalDetails"></p>
+                </div>
             </div>
         </div>
     </div>
@@ -556,17 +851,23 @@
         function displayUploadedFiles(files) {
             if (files.length === 0) {
                 uploadedFilesGrid.innerHTML = '<p style="text-align: center; color: #666;">업로드된 파일이 없습니다.</p>';
+                updateDeleteButton();
                 return;
             }
 
             uploadedFilesGrid.innerHTML = '';
             
-            files.forEach(file => {
+            files.forEach((file, index) => {
                 const fileDiv = document.createElement('div');
                 fileDiv.className = 'uploaded-file';
+                fileDiv.dataset.filename = file.filename;
                 
                 fileDiv.innerHTML = `
-                    <img src="${file.path}" alt="${file.filename}" loading="lazy">
+                    <input type="checkbox" class="file-checkbox" data-filename="${file.filename}">
+                    <div class="file-actions">
+                        <button class="action-btn delete" onclick="deleteFile('${file.filename}')" title="삭제">🗑️</button>
+                    </div>
+                    <img src="${file.path}" alt="${file.filename}" loading="lazy" onclick="openModal('${file.path}', '${file.filename}', '${(file.size / 1024).toFixed(1)} KB, ${file.uploadedAt}')">
                     <div class="uploaded-file-info">
                         <div class="uploaded-file-name">${file.filename}</div>
                         <div class="uploaded-file-meta">
@@ -578,7 +879,170 @@
                 
                 uploadedFilesGrid.appendChild(fileDiv);
             });
+
+            // 체크박스 이벤트 리스너 추가
+            const checkboxes = document.querySelectorAll('.file-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const fileDiv = this.closest('.uploaded-file');
+                    if (this.checked) {
+                        fileDiv.classList.add('selected');
+                    } else {
+                        fileDiv.classList.remove('selected');
+                    }
+                    updateDeleteButton();
+                    updateSelectAllButton();
+                });
+            });
         }
+
+        // 전체 선택/해제
+        let isAllSelected = false;
+        function selectAll() {
+            const checkboxes = document.querySelectorAll('.file-checkbox');
+            const selectAllBtn = document.getElementById('selectAllBtn');
+            
+            isAllSelected = !isAllSelected;
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = isAllSelected;
+                const fileDiv = checkbox.closest('.uploaded-file');
+                if (isAllSelected) {
+                    fileDiv.classList.add('selected');
+                } else {
+                    fileDiv.classList.remove('selected');
+                }
+            });
+            
+            selectAllBtn.textContent = isAllSelected ? '전체 해제' : '전체 선택';
+            updateDeleteButton();
+        }
+
+        // 전체 선택 버튼 상태 업데이트
+        function updateSelectAllButton() {
+            const checkboxes = document.querySelectorAll('.file-checkbox');
+            const checkedBoxes = document.querySelectorAll('.file-checkbox:checked');
+            const selectAllBtn = document.getElementById('selectAllBtn');
+            
+            if (checkboxes.length === 0) {
+                selectAllBtn.textContent = '전체 선택';
+                isAllSelected = false;
+                return;
+            }
+            
+            if (checkedBoxes.length === checkboxes.length) {
+                selectAllBtn.textContent = '전체 해제';
+                isAllSelected = true;
+            } else {
+                selectAllBtn.textContent = '전체 선택';
+                isAllSelected = false;
+            }
+        }
+
+        // 삭제 버튼 상태 업데이트
+        function updateDeleteButton() {
+            const checkedBoxes = document.querySelectorAll('.file-checkbox:checked');
+            const deleteBtn = document.getElementById('deleteBtn');
+            deleteBtn.disabled = checkedBoxes.length === 0;
+            deleteBtn.textContent = `선택 삭제 (${checkedBoxes.length})`;
+        }
+
+        // 선택된 파일들 삭제
+        async function deleteSelected() {
+            const checkedBoxes = document.querySelectorAll('.file-checkbox:checked');
+            if (checkedBoxes.length === 0) return;
+
+            const filenames = Array.from(checkedBoxes).map(cb => cb.dataset.filename);
+            
+            if (!confirm(`선택된 ${filenames.length}개 파일을 삭제하시겠습니까?`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/delete-files', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ filenames })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showMessage(result.message, 'success');
+                    loadUploadedFiles();
+                } else {
+                    showMessage(result.message, 'error');
+                }
+
+            } catch (error) {
+                console.error('Delete error:', error);
+                showMessage('파일 삭제 중 오류가 발생했습니다.', 'error');
+            }
+        }
+
+        // 개별 파일 삭제
+        async function deleteFile(filename) {
+            if (!confirm(`"${filename}" 파일을 삭제하시겠습니까?`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/delete-file/${encodeURIComponent(filename)}`, {
+                    method: 'DELETE'
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showMessage(result.message, 'success');
+                    loadUploadedFiles();
+                } else {
+                    showMessage(result.message, 'error');
+                }
+
+            } catch (error) {
+                console.error('Delete error:', error);
+                showMessage('파일 삭제 중 오류가 발생했습니다.', 'error');
+            }
+        }
+
+        // 이미지 모달 열기
+        function openModal(imagePath, filename, details) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDetails = document.getElementById('modalDetails');
+
+            modalImage.src = imagePath;
+            modalTitle.textContent = filename;
+            modalDetails.textContent = details;
+
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 이미지 모달 닫기
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // 모달 클릭 시 닫기 (이미지 제외)
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
 
         // 페이지 로드 시 업로드된 파일 목록 로드
         document.addEventListener('DOMContentLoaded', loadUploadedFiles);

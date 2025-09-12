@@ -244,6 +244,84 @@ app.get('/api/new-folder-files', (req, res) => {
     }
 });
 
+// Delete file endpoint
+app.delete('/api/delete-file/:filename', (req, res) => {
+    try {
+        const filename = req.params.filename;
+        const filePath = path.join(__dirname, 'public/images/new-folder', filename);
+        
+        // 파일 존재 확인
+        if (!fs.existsSync(filePath)) {
+            return res.status(404).json({
+                success: false,
+                message: '파일을 찾을 수 없습니다.'
+            });
+        }
+        
+        // 파일 삭제
+        fs.unlinkSync(filePath);
+        
+        console.log(`파일이 삭제되었습니다: ${filename}`);
+        
+        res.json({
+            success: true,
+            message: '파일이 성공적으로 삭제되었습니다.'
+        });
+        
+    } catch (error) {
+        console.error('파일 삭제 오류:', error);
+        res.status(500).json({
+            success: false,
+            message: '파일 삭제 중 오류가 발생했습니다.'
+        });
+    }
+});
+
+// Batch delete files endpoint
+app.post('/api/delete-files', (req, res) => {
+    try {
+        const { filenames } = req.body;
+        
+        if (!Array.isArray(filenames) || filenames.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: '삭제할 파일을 선택해주세요.'
+            });
+        }
+        
+        let deletedCount = 0;
+        const errors = [];
+        
+        filenames.forEach(filename => {
+            try {
+                const filePath = path.join(__dirname, 'public/images/new-folder', filename);
+                if (fs.existsSync(filePath)) {
+                    fs.unlinkSync(filePath);
+                    deletedCount++;
+                }
+            } catch (error) {
+                errors.push(`${filename}: ${error.message}`);
+            }
+        });
+        
+        console.log(`${deletedCount}개 파일이 일괄 삭제되었습니다.`);
+        
+        res.json({
+            success: true,
+            message: `${deletedCount}개 파일이 성공적으로 삭제되었습니다.`,
+            deletedCount,
+            errors: errors.length > 0 ? errors : null
+        });
+        
+    } catch (error) {
+        console.error('일괄 삭제 오류:', error);
+        res.status(500).json({
+            success: false,
+            message: '파일 삭제 중 오류가 발생했습니다.'
+        });
+    }
+});
+
 // Admin page for file upload
 app.get('/admin', (req, res) => {
     res.render('admin', {

@@ -18,7 +18,7 @@ async function testGoogleDriveAuth() {
 
         console.log('📝 OAuth2 client created successfully');
         
-        // Try with new authorization code
+        // Try with second authorization code
         const authCode = '4/1AVMBsJiH9_Tnnp1pRjU2AgV0m2COarf7Q-H3ZXfcirxIFZV2VUhChwNatag';
         console.log('🔑 Attempting to exchange authorization code for tokens...');
         

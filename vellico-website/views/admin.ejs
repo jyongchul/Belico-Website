@@ -515,6 +515,53 @@
             z-index: 15;
         }
 
+        /* Folder Tabs */
+        .folder-tabs {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .folder-tab {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            background: white;
+            color: #666;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .folder-tab:hover {
+            border-color: #2c5aa0;
+            color: #2c5aa0;
+            transform: translateY(-2px);
+        }
+
+        .folder-tab.active {
+            background: #2c5aa0;
+            color: white;
+            border-color: #2c5aa0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 90, 160, 0.3);
+        }
+
+        .current-folder-indicator {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 8px;
+            color: #1976d2;
+            font-weight: 500;
+        }
+
         /* 반응형 디자인 */
         @media (max-width: 768px) {
             .guide-content {
@@ -541,6 +588,17 @@
                 margin: 20px;
                 max-width: calc(100vw - 40px);
             }
+
+            .folder-tabs {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .folder-tab {
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -550,10 +608,24 @@
         
         <div class="admin-header">
             <h1>🔧 벨리코 관리자</h1>
-            <p>Google Drive '새 폴더' 이미지를 웹사이트에 업로드하세요</p>
+            <p>Google Drive 폴더들의 이미지를 웹사이트에 업로드하고 관리하세요</p>
+            
+            <!-- Folder Selection -->
+            <div class="folder-tabs">
+                <button class="folder-tab active" data-folder="new-folder" onclick="switchFolder('new-folder')">
+                    📁 새 폴더
+                </button>
+                <button class="folder-tab" data-folder="new-folder-2" onclick="switchFolder('new-folder-2')">
+                    📁 새 폴더 (2)
+                </button>
+            </div>
         </div>
 
         <div class="upload-section">
+            <div class="current-folder-indicator" id="currentFolderIndicator">
+                📁 현재 업로드 대상: <strong>새 폴더</strong>
+            </div>
+            
             <div class="upload-area" id="uploadArea">
                 <div class="upload-icon">📁</div>
                 <div class="upload-text">클릭하거나 이미지를 드래그하세요</div>
@@ -639,6 +711,7 @@
 
     <script>
         let selectedFiles = [];
+        let currentFolder = 'new-folder'; // 현재 선택된 폴더
 
         // DOM 요소들
         const uploadArea = document.getElementById('uploadArea');
@@ -651,6 +724,26 @@
         const progressFill = document.getElementById('progressFill');
         const statusMessage = document.getElementById('statusMessage');
         const uploadedFilesGrid = document.getElementById('uploadedFilesGrid');
+
+        // 폴더 전환 함수
+        function switchFolder(folderName) {
+            currentFolder = folderName;
+            
+            // 탭 UI 업데이트
+            const tabs = document.querySelectorAll('.folder-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.folder === folderName) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            // 현재 폴더의 파일 목록 로드
+            loadUploadedFiles();
+            
+            // 선택된 파일들 초기화
+            clearFiles();
+        }
 
         // 이벤트 리스너 설정
         uploadArea.addEventListener('click', () => fileInput.click());
@@ -769,6 +862,7 @@
             selectedFiles.forEach(file => {
                 formData.append('images', file);
             });
+            formData.append('folder', currentFolder); // 현재 선택된 폴더 추가
 
             // UI 업데이트
             uploadBtn.disabled = true;
@@ -834,7 +928,7 @@
         // 업로드된 파일 목록 로드
         async function loadUploadedFiles() {
             try {
-                const response = await fetch('/api/new-folder-files');
+                const response = await fetch(`/api/folder-files/${currentFolder}`);
                 const result = await response.json();
 
                 if (result.success) {
@@ -964,7 +1058,7 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ filenames })
+                    body: JSON.stringify({ filenames, folder: currentFolder })
                 });
 
                 const result = await response.json();
@@ -989,7 +1083,7 @@
             }
 
             try {
-                const response = await fetch(`/api/delete-file/${encodeURIComponent(filename)}`, {
+                const response = await fetch(`/api/delete-file/${encodeURIComponent(currentFolder)}/${encodeURIComponent(filename)}`, {
                     method: 'DELETE'
                 });
 

@@ -1189,29 +1189,45 @@
             }
         }
 
-        // Load new folder uploads
+        // Load new folder uploads from both folders
         async function loadNewFolderUploads() {
             try {
-                const response = await fetch('/api/new-folder-files');
+                const response = await fetch('/api/all-folders');
                 const result = await response.json();
                 
                 const uploadsContainer = document.getElementById('new-uploads-content');
                 
-                if (result.success && result.files.length > 0) {
+                // Combine files from all folders
+                let allFiles = [];
+                if (result.success) {
+                    Object.keys(result.folders).forEach(folderName => {
+                        const folderFiles = result.folders[folderName].files.map(file => ({
+                            ...file,
+                            folderDisplayName: folderName === 'new-folder' ? '새 폴더' : 
+                                             folderName === 'new-folder-2' ? '새 폴더 (2)' : folderName
+                        }));
+                        allFiles = allFiles.concat(folderFiles);
+                    });
+                    // Sort by upload time (most recent first)
+                    allFiles.sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+                }
+                
+                if (allFiles.length > 0) {
                     // Hide no-uploads message
                     const noUploadsMessage = uploadsContainer.querySelector('.no-uploads-message');
                     if (noUploadsMessage) {
                         noUploadsMessage.style.display = 'none';
                     }
                     
-                    // Create grid for uploaded images
-                    const uploadsGrid = result.files.map((file, index) => `
+                    // Create grid for uploaded images from both folders
+                    const uploadsGrid = allFiles.map((file, index) => `
                         <div class="upload-item" data-aos="zoom-in" data-aos-delay="${index * 100}">
                             <div class="upload-image">
-                                <img src="${file.path}" alt="새 폴더 업로드 이미지" loading="lazy">
+                                <img src="${file.path}" alt="${file.folderDisplayName} 업로드 이미지" loading="lazy">
                             </div>
                             <div class="upload-info">
                                 <h4>${file.filename}</h4>
+                                <p>폴더: ${file.folderDisplayName}</p>
                                 <p>업로드: ${file.uploadedAt}</p>
                                 <span class="upload-size">${(file.size / 1024).toFixed(2)} KB</span>
                             </div>

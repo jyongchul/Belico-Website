@@ -8,12 +8,18 @@ const PORT = process.env.PORT || 3060; // Use environment port or default
 // Configure multer for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const uploadPath = 'public/images/new-folder/';
+        // Determine folder based on request or default to new-folder
+        const folderType = req.body.folder || 'new-folder';
+        const uploadPath = `public/images/${folderType}/`;
+        
         // Create directory if it doesn't exist
         if (!fs.existsSync(uploadPath)) {
             fs.mkdirSync(uploadPath, { recursive: true });
         }
         cb(null, uploadPath);
+        
+        // Store folder info in request for later use
+        req.uploadFolder = folderType;
     },
     filename: function (req, file, cb) {
         // Keep original filename with timestamp prefix to avoid conflicts
@@ -179,11 +185,13 @@ app.post('/upload', upload.array('images', 10), (req, res) => {
             });
         }
 
+        const folderType = req.body.folder || 'new-folder';
         const uploadedFiles = req.files.map(file => ({
             filename: file.filename,
             originalName: file.originalname,
             size: file.size,
-            path: `/images/new-folder/${file.filename}`
+            path: `/images/${folderType}/${file.filename}`,
+            folder: folderType
         }));
 
         console.log('새로운 파일이 업로드되었습니다:');
@@ -206,13 +214,63 @@ app.post('/upload', upload.array('images', 10), (req, res) => {
     }
 });
 
-// API to list uploaded files in new-folder
+// API to list uploaded files (supports multiple folders)
+app.get('/api/folder-files/:folderName', (req, res) => {
+    try {
+        const folderName = req.params.folderName || 'new-folder';
+        const folderPath = path.join(__dirname, 'public/images', folderName);
+        
+        if (!fs.existsSync(folderPath)) {
+            return res.json({ 
+                success: true,
+                count: 0,
+                files: [],
+                folder: folderName
+            });
+        }
+
+        const files = fs.readdirSync(folderPath)
+            .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
+            .map(filename => {
+                const filePath = path.join(folderPath, filename);
+                const stats = fs.statSync(filePath);
+                return {
+                    filename,
+                    path: `/images/${folderName}/${filename}`,
+                    size: stats.size,
+                    uploadedAt: stats.ctime.toLocaleString('ko-KR'),
+                    folder: folderName
+                };
+            })
+            .sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+
+        res.json({
+            success: true,
+            count: files.length,
+            files,
+            folder: folderName
+        });
+
+    } catch (error) {
+        console.error('파일 목록 조회 오류:', error);
+        res.status(500).json({
+            success: false,
+            message: '파일 목록을 조회할 수 없습니다.'
+        });
+    }
+});
+
+// Backward compatibility endpoint
 app.get('/api/new-folder-files', (req, res) => {
     try {
         const folderPath = path.join(__dirname, 'public/images/new-folder');
         
         if (!fs.existsSync(folderPath)) {
-            return res.json({ files: [] });
+            return res.json({ 
+                success: true,
+                count: 0,
+                files: []
+            });
         }
 
         const files = fs.readdirSync(folderPath)
@@ -244,11 +302,64 @@ app.get('/api/new-folder-files', (req, res) => {
     }
 });
 
-// Delete file endpoint
-app.delete('/api/delete-file/:filename', (req, res) => {
+// API to list all folders and their files
+app.get('/api/all-folders', (req, res) => {
     try {
+        const imagesPath = path.join(__dirname, 'public/images');
+        const folders = ['new-folder', 'new-folder-2'];
+        const result = {};
+        
+        folders.forEach(folderName => {
+            const folderPath = path.join(imagesPath, folderName);
+            
+            if (fs.existsSync(folderPath)) {
+                const files = fs.readdirSync(folderPath)
+                    .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
+                    .map(filename => {
+                        const filePath = path.join(folderPath, filename);
+                        const stats = fs.statSync(filePath);
+                        return {
+                            filename,
+                            path: `/images/${folderName}/${filename}`,
+                            size: stats.size,
+                            uploadedAt: stats.ctime.toLocaleString('ko-KR'),
+                            folder: folderName
+                        };
+                    })
+                    .sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+                
+                result[folderName] = {
+                    count: files.length,
+                    files
+                };
+            } else {
+                result[folderName] = {
+                    count: 0,
+                    files: []
+                };
+            }
+        });
+        
+        res.json({
+            success: true,
+            folders: result
+        });
+        
+    } catch (error) {
+        console.error('전체 폴더 조회 오류:', error);
+        res.status(500).json({
+            success: false,
+            message: '폴더 목록을 조회할 수 없습니다.'
+        });
+    }
+});
+
+// Delete file endpoint (supports multiple folders)
+app.delete('/api/delete-file/:folderName/:filename', (req, res) => {
+    try {
+        const folderName = req.params.folderName;
         const filename = req.params.filename;
-        const filePath = path.join(__dirname, 'public/images/new-folder', filename);
+        const filePath = path.join(__dirname, 'public/images', folderName, filename);
         
         // 파일 존재 확인
         if (!fs.existsSync(filePath)) {
@@ -261,11 +372,12 @@ app.delete('/api/delete-file/:filename', (req, res) => {
         // 파일 삭제
         fs.unlinkSync(filePath);
         
-        console.log(`파일이 삭제되었습니다: ${filename}`);
+        console.log(`파일이 삭제되었습니다: ${filename} (폴더: ${folderName})`);
         
         res.json({
             success: true,
-            message: '파일이 성공적으로 삭제되었습니다.'
+            message: '파일이 성공적으로 삭제되었습니다.',
+            folder: folderName
         });
         
     } catch (error) {
@@ -277,10 +389,53 @@ app.delete('/api/delete-file/:filename', (req, res) => {
     }
 });
 
-// Batch delete files endpoint
+// Backward compatibility delete endpoint
+app.delete('/api/delete-file/:filename', (req, res) => {
+    try {
+        const filename = req.params.filename;
+        const folders = ['new-folder', 'new-folder-2'];
+        
+        let fileFound = false;
+        let deletedFrom = '';
+        
+        // Search in all folders
+        for (const folderName of folders) {
+            const filePath = path.join(__dirname, 'public/images', folderName, filename);
+            if (fs.existsSync(filePath)) {
+                fs.unlinkSync(filePath);
+                fileFound = true;
+                deletedFrom = folderName;
+                console.log(`파일이 삭제되었습니다: ${filename} (폴더: ${folderName})`);
+                break;
+            }
+        }
+        
+        if (!fileFound) {
+            return res.status(404).json({
+                success: false,
+                message: '파일을 찾을 수 없습니다.'
+            });
+        }
+        
+        res.json({
+            success: true,
+            message: '파일이 성공적으로 삭제되었습니다.',
+            folder: deletedFrom
+        });
+        
+    } catch (error) {
+        console.error('파일 삭제 오류:', error);
+        res.status(500).json({
+            success: false,
+            message: '파일 삭제 중 오류가 발생했습니다.'
+        });
+    }
+});
+
+// Batch delete files endpoint (supports multiple folders)
 app.post('/api/delete-files', (req, res) => {
     try {
-        const { filenames } = req.body;
+        const { filenames, folder } = req.body;
         
         if (!Array.isArray(filenames) || filenames.length === 0) {
             return res.status(400).json({
@@ -291,13 +446,25 @@ app.post('/api/delete-files', (req, res) => {
         
         let deletedCount = 0;
         const errors = [];
+        const folders = folder ? [folder] : ['new-folder', 'new-folder-2'];
         
         filenames.forEach(filename => {
             try {
-                const filePath = path.join(__dirname, 'public/images/new-folder', filename);
-                if (fs.existsSync(filePath)) {
-                    fs.unlinkSync(filePath);
-                    deletedCount++;
+                let fileDeleted = false;
+                
+                for (const folderName of folders) {
+                    const filePath = path.join(__dirname, 'public/images', folderName, filename);
+                    if (fs.existsSync(filePath)) {
+                        fs.unlinkSync(filePath);
+                        deletedCount++;
+                        fileDeleted = true;
+                        console.log(`파일 삭제: ${filename} (폴더: ${folderName})`);
+                        break;
+                    }
+                }
+                
+                if (!fileDeleted) {
+                    errors.push(`${filename}: 파일을 찾을 수 없습니다`);
                 }
             } catch (error) {
                 errors.push(`${filename}: ${error.message}`);

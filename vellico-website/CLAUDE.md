@@ -11,12 +11,12 @@ npm start
 # 서버가 http://localhost:3060 에서 실행됩니다
 ```
 
-### 2. 향상된 관리자 패널 - 멀티 폴더 지원 파일 관리 시스템
+### 2. 향상된 관리자 패널 - 3개 폴더 지원 파일 관리 시스템
 - **URL**: `http://localhost:3060/admin`  
-- **기능**: Google Drive "새 폴더" 및 "새 폴더 (2)"의 이미지들을 효율적으로 관리
+- **기능**: Google Drive "새 폴더", "새 폴더 (2)", "새 폴더 (3)"의 이미지들을 효율적으로 관리
 - **지원 형식**: JPG, PNG, GIF, WEBP (최대 10MB per file, 동시 10개 파일)
 - **새로운 기능들**:
-  - ✅ **멀티 폴더 지원**: "새 폴더"와 "새 폴더 (2)" 탭 전환
+  - ✅ **3개 폴더 지원**: "새 폴더", "새 폴더 (2)", "새 폴더 (3)" 탭 전환
   - ✅ **드래그앤드롭 업로드**: 직관적인 파일 업로드
   - ✅ **일괄 선택/삭제**: 체크박스로 여러 파일 동시 관리
   - ✅ **개별 파일 삭제**: 호버 시 나타나는 삭제 버튼
@@ -46,9 +46,9 @@ npm start
 원래 Google Drive API 자동 연동을 시도했으나 네트워크 문제로 인해 수동 업로드 방식으로 대체했습니다.
 
 ### 사용 방법:
-1. Google Drive "g:\My Drive\Belico\새 폴더" 또는 "g:\My Drive\Belico\새 폴더 (2)"에서 이미지 파일들을 로컬로 다운로드
+1. Google Drive "g:\My Drive\Belico\새 폴더", "g:\My Drive\Belico\새 폴더 (2)", "g:\My Drive\Belico\새 폴더 (3)"에서 이미지 파일들을 로컬로 다운로드
 2. `http://localhost:3060/admin`에 접속
-3. 원하는 폴더 탭 (새 폴더 / 새 폴더 (2)) 선택
+3. 원하는 폴더 탭 (새 폴더 / 새 폴더 (2) / 새 폴더 (3)) 선택
 4. 드래그앤드롭 또는 파일 선택으로 이미지 업로드
 5. 메인 웹사이트에서 "최신 업로드" 섹션에서 모든 폴더의 파일 확인
 
@@ -56,16 +56,17 @@ npm start
 ```
 /public/images/new-folder/     # "새 폴더" 업로드된 이미지 저장소
 /public/images/new-folder-2/   # "새 폴더 (2)" 업로드된 이미지 저장소
-/views/admin.ejs              # 멀티 폴더 관리자 업로드 패널
+/public/images/new-folder-3/   # "새 폴더 (3)" 업로드된 이미지 저장소
+/views/admin.ejs              # 3개 폴더 관리자 업로드 패널
 /views/index.ejs              # 메인 웹사이트 (모든 폴더 표시)
 /server.js                    # Express 서버 메인 파일
 ```
 
 ## 유지보수
-- 업로드 파일은 선택한 폴더에 따라 `public/images/new-folder/` 또는 `public/images/new-folder-2/` 디렉토리에 timestamp 접두사와 함께 저장
+- 업로드 파일은 선택한 폴더에 따라 `public/images/new-folder/`, `public/images/new-folder-2/`, `public/images/new-folder-3/` 디렉토리에 timestamp 접두사와 함께 저장
 - 서버 재시작 시 npm start 명령 사용
 - 포트는 환경변수 PORT 또는 기본값 3060 사용
-- 폴더별 개별 관리 및 통합 조회 지원
+- 3개 폴더 개별 관리 및 통합 조회 지원
 
 ## 배포
 현재 로컬 개발 환경용으로 구성. 프로덕션 배포 시 환경변수 설정 및 보안 강화 필요.

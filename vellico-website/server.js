@@ -306,7 +306,7 @@ app.get('/api/new-folder-files', (req, res) => {
 app.get('/api/all-folders', (req, res) => {
     try {
         const imagesPath = path.join(__dirname, 'public/images');
-        const folders = ['new-folder', 'new-folder-2'];
+        const folders = ['new-folder', 'new-folder-2', 'new-folder-3'];
         const result = {};
         
         folders.forEach(folderName => {
@@ -393,7 +393,7 @@ app.delete('/api/delete-file/:folderName/:filename', (req, res) => {
 app.delete('/api/delete-file/:filename', (req, res) => {
     try {
         const filename = req.params.filename;
-        const folders = ['new-folder', 'new-folder-2'];
+        const folders = ['new-folder', 'new-folder-2', 'new-folder-3'];
         
         let fileFound = false;
         let deletedFrom = '';
@@ -446,7 +446,7 @@ app.post('/api/delete-files', (req, res) => {
         
         let deletedCount = 0;
         const errors = [];
-        const folders = folder ? [folder] : ['new-folder', 'new-folder-2'];
+        const folders = folder ? [folder] : ['new-folder', 'new-folder-2', 'new-folder-3'];
         
         filenames.forEach(filename => {
             try {

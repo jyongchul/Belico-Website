@@ -1204,7 +1204,8 @@
                         const folderFiles = result.folders[folderName].files.map(file => ({
                             ...file,
                             folderDisplayName: folderName === 'new-folder' ? '새 폴더' : 
-                                             folderName === 'new-folder-2' ? '새 폴더 (2)' : folderName
+                                             folderName === 'new-folder-2' ? '새 폴더 (2)' :
+                                             folderName === 'new-folder-3' ? '새 폴더 (3)' : folderName
                         }));
                         allFiles = allFiles.concat(folderFiles);
                     });

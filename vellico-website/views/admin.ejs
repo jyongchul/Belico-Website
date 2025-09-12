@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .admin-header h1 {
+            color: #2c5aa0;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .admin-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .upload-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .upload-area {
+            border: 3px dashed #ddd;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .upload-area:hover {
+            border-color: #2c5aa0;
+            background: rgba(44, 90, 160, 0.05);
+        }
+        
+        .upload-area.dragover {
+            border-color: #2c5aa0;
+            background: rgba(44, 90, 160, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .upload-icon {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .upload-area:hover .upload-icon {
+            color: #2c5aa0;
+        }
+        
+        .file-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .upload-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .upload-hint {
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        .selected-files {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .file-icon {
+            margin-right: 10px;
+            color: #2c5aa0;
+        }
+        
+        .file-name {
+            font-weight: 500;
+        }
+        
+        .file-size {
+            color: #666;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        
+        .remove-file {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .upload-controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #2c5aa0;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1e3d6f;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .uploaded-files-section {
+            margin-top: 40px;
+        }
+        
+        .uploaded-files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .uploaded-files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .uploaded-file {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .uploaded-file:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .uploaded-file img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .uploaded-file-info {
+            font-size: 0.9rem;
+        }
+        
+        .uploaded-file-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+            word-break: break-all;
+        }
+        
+        .uploaded-file-meta {
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
+        .status-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #eee;
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #2c5aa0, #4CAF50);
+            width: 0%;
+            transition: width 0.3s ease;
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #1e3d6f;
+            transform: translateX(-5px);
+        }
+        
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <a href="/" class="back-link">← 메인 사이트로 돌아가기</a>
+        
+        <div class="admin-header">
+            <h1>🔧 벨리코 관리자</h1>
+            <p>Google Drive '새 폴더' 이미지를 웹사이트에 업로드하세요</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <div class="upload-text">클릭하거나 이미지를 드래그하세요</div>
+                <div class="upload-hint">JPG, PNG, GIF, WEBP 파일 (최대 10MB, 최대 10개)</div>
+                <input type="file" id="fileInput" class="file-input" multiple accept="image/*">
+            </div>
+
+            <div class="selected-files" id="selectedFiles">
+                <h4>선택된 파일</h4>
+                <div id="fileList"></div>
+            </div>
+
+            <div class="progress-bar" id="progressBar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="upload-controls">
+                <button class="btn btn-primary" id="uploadBtn" onclick="uploadFiles()" disabled>
+                    업로드 시작
+                </button>
+                <button class="btn btn-secondary" id="clearBtn" onclick="clearFiles()">
+                    선택 취소
+                </button>
+            </div>
+
+            <div id="statusMessage"></div>
+        </div>
+
+        <div class="uploaded-files-section">
+            <div class="uploaded-files-header">
+                <h3>업로드된 파일들</h3>
+                <button class="btn btn-secondary" onclick="loadUploadedFiles()">새로고침</button>
+            </div>
+            <div class="uploaded-files-grid" id="uploadedFilesGrid">
+                <!-- 업로드된 파일들이 여기에 표시됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedFiles = [];
+
+        // DOM 요소들
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const selectedFilesDiv = document.getElementById('selectedFiles');
+        const fileListDiv = document.getElementById('fileList');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+        const statusMessage = document.getElementById('statusMessage');
+        const uploadedFilesGrid = document.getElementById('uploadedFilesGrid');
+
+        // 이벤트 리스너 설정
+        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('dragover', handleDragOver);
+        uploadArea.addEventListener('dragleave', handleDragLeave);
+        uploadArea.addEventListener('drop', handleDrop);
+        fileInput.addEventListener('change', handleFileSelect);
+
+        // 드래그 오버 처리
+        function handleDragOver(e) {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        }
+
+        // 드래그 리브 처리
+        function handleDragLeave(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+        }
+
+        // 드롭 처리
+        function handleDrop(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = Array.from(e.dataTransfer.files);
+            addFiles(files);
+        }
+
+        // 파일 선택 처리
+        function handleFileSelect(e) {
+            const files = Array.from(e.target.files);
+            addFiles(files);
+        }
+
+        // 파일 추가
+        function addFiles(files) {
+            const imageFiles = files.filter(file => file.type.startsWith('image/'));
+            
+            if (imageFiles.length === 0) {
+                showMessage('이미지 파일만 업로드할 수 있습니다.', 'error');
+                return;
+            }
+
+            // 10MB 크기 제한
+            const oversizedFiles = imageFiles.filter(file => file.size > 10 * 1024 * 1024);
+            if (oversizedFiles.length > 0) {
+                showMessage(`다음 파일이 10MB를 초과합니다: ${oversizedFiles.map(f => f.name).join(', ')}`, 'error');
+                return;
+            }
+
+            // 기존 파일과 합쳐서 최대 10개 제한
+            const newFiles = [...selectedFiles, ...imageFiles].slice(0, 10);
+            
+            if (newFiles.length > 10) {
+                showMessage('최대 10개 파일까지만 업로드할 수 있습니다.', 'error');
+            }
+
+            selectedFiles = newFiles;
+            updateFileList();
+            updateUploadButton();
+        }
+
+        // 파일 목록 업데이트
+        function updateFileList() {
+            if (selectedFiles.length === 0) {
+                selectedFilesDiv.style.display = 'none';
+                return;
+            }
+
+            selectedFilesDiv.style.display = 'block';
+            fileListDiv.innerHTML = '';
+
+            selectedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                
+                fileItem.innerHTML = `
+                    <div class="file-info">
+                        <span class="file-icon">🖼️</span>
+                        <span class="file-name">${file.name}</span>
+                        <span class="file-size">(${(file.size / 1024).toFixed(1)} KB)</span>
+                    </div>
+                    <button class="remove-file" onclick="removeFile(${index})">제거</button>
+                `;
+                
+                fileListDiv.appendChild(fileItem);
+            });
+        }
+
+        // 파일 제거
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            updateFileList();
+            updateUploadButton();
+        }
+
+        // 파일 선택 취소
+        function clearFiles() {
+            selectedFiles = [];
+            fileInput.value = '';
+            updateFileList();
+            updateUploadButton();
+            hideMessage();
+        }
+
+        // 업로드 버튼 상태 업데이트
+        function updateUploadButton() {
+            uploadBtn.disabled = selectedFiles.length === 0;
+        }
+
+        // 파일 업로드
+        async function uploadFiles() {
+            if (selectedFiles.length === 0) return;
+
+            const formData = new FormData();
+            selectedFiles.forEach(file => {
+                formData.append('images', file);
+            });
+
+            // UI 업데이트
+            uploadBtn.disabled = true;
+            uploadBtn.textContent = '업로드 중...';
+            progressBar.style.display = 'block';
+            progressFill.style.width = '0%';
+            document.body.classList.add('loading');
+
+            // 진행률 애니메이션
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 30;
+                if (progress > 90) progress = 90;
+                progressFill.style.width = progress + '%';
+            }, 200);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                
+                clearInterval(progressInterval);
+                progressFill.style.width = '100%';
+
+                if (result.success) {
+                    showMessage(result.message, 'success');
+                    clearFiles();
+                    setTimeout(loadUploadedFiles, 1000);
+                } else {
+                    showMessage(result.message, 'error');
+                }
+
+            } catch (error) {
+                clearInterval(progressInterval);
+                console.error('Upload error:', error);
+                showMessage('업로드 중 오류가 발생했습니다.', 'error');
+            } finally {
+                // UI 복원
+                document.body.classList.remove('loading');
+                uploadBtn.disabled = false;
+                uploadBtn.textContent = '업로드 시작';
+                setTimeout(() => {
+                    progressBar.style.display = 'none';
+                }, 1000);
+                updateUploadButton();
+            }
+        }
+
+        // 메시지 표시
+        function showMessage(message, type) {
+            statusMessage.innerHTML = `<div class="status-message status-${type}">${message}</div>`;
+            setTimeout(hideMessage, 5000);
+        }
+
+        // 메시지 숨기기
+        function hideMessage() {
+            statusMessage.innerHTML = '';
+        }
+
+        // 업로드된 파일 목록 로드
+        async function loadUploadedFiles() {
+            try {
+                const response = await fetch('/api/new-folder-files');
+                const result = await response.json();
+
+                if (result.success) {
+                    displayUploadedFiles(result.files);
+                } else {
+                    console.error('Failed to load uploaded files:', result.message);
+                }
+            } catch (error) {
+                console.error('Error loading uploaded files:', error);
+            }
+        }
+
+        // 업로드된 파일 표시
+        function displayUploadedFiles(files) {
+            if (files.length === 0) {
+                uploadedFilesGrid.innerHTML = '<p style="text-align: center; color: #666;">업로드된 파일이 없습니다.</p>';
+                return;
+            }
+
+            uploadedFilesGrid.innerHTML = '';
+            
+            files.forEach(file => {
+                const fileDiv = document.createElement('div');
+                fileDiv.className = 'uploaded-file';
+                
+                fileDiv.innerHTML = `
+                    <img src="${file.path}" alt="${file.filename}" loading="lazy">
+                    <div class="uploaded-file-info">
+                        <div class="uploaded-file-name">${file.filename}</div>
+                        <div class="uploaded-file-meta">
+                            ${(file.size / 1024).toFixed(1)} KB<br>
+                            ${file.uploadedAt}
+                        </div>
+                    </div>
+                `;
+                
+                uploadedFilesGrid.appendChild(fileDiv);
+            });
+        }
+
+        // 페이지 로드 시 업로드된 파일 목록 로드
+        document.addEventListener('DOMContentLoaded', loadUploadedFiles);
+    </script>
+</body>
+</html>

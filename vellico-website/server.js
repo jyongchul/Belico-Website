@@ -1,7 +1,42 @@
 const express = require('express');
 const path = require('path');
+const multer = require('multer');
+const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3060; // Use environment port or default
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const uploadPath = 'public/images/new-folder/';
+        // Create directory if it doesn't exist
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath, { recursive: true });
+        }
+        cb(null, uploadPath);
+    },
+    filename: function (req, file, cb) {
+        // Keep original filename with timestamp prefix to avoid conflicts
+        const timestamp = Date.now();
+        const originalName = file.originalname;
+        cb(null, `${timestamp}-${originalName}`);
+    }
+});
+
+const upload = multer({ 
+    storage: storage,
+    limits: {
+        fileSize: 10 * 1024 * 1024 // 10MB limit
+    },
+    fileFilter: function (req, file, cb) {
+        // Allow only image files
+        if (file.mimetype.startsWith('image/')) {
+            cb(null, true);
+        } else {
+            cb(new Error('Only image files are allowed!'), false);
+        }
+    }
+});
 
 // Set EJS as template engine
 app.set('view engine', 'ejs');
@@ -131,6 +166,89 @@ app.get('/api/testimonials', (req, res) => {
     res.json({
         testimonials: randomTestimonials,
         totalCount: 156
+    });
+});
+
+// File upload endpoint for admin
+app.post('/upload', upload.array('images', 10), (req, res) => {
+    try {
+        if (!req.files || req.files.length === 0) {
+            return res.status(400).json({ 
+                success: false, 
+                message: '업로드할 파일을 선택해주세요.' 
+            });
+        }
+
+        const uploadedFiles = req.files.map(file => ({
+            filename: file.filename,
+            originalName: file.originalname,
+            size: file.size,
+            path: `/images/new-folder/${file.filename}`
+        }));
+
+        console.log('새로운 파일이 업로드되었습니다:');
+        uploadedFiles.forEach((file, index) => {
+            console.log(`${index + 1}. ${file.originalName} → ${file.filename} (${(file.size / 1024).toFixed(2)} KB)`);
+        });
+
+        res.json({
+            success: true,
+            message: `${req.files.length}개 파일이 성공적으로 업로드되었습니다.`,
+            files: uploadedFiles
+        });
+
+    } catch (error) {
+        console.error('파일 업로드 오류:', error);
+        res.status(500).json({
+            success: false,
+            message: '파일 업로드 중 오류가 발생했습니다.'
+        });
+    }
+});
+
+// API to list uploaded files in new-folder
+app.get('/api/new-folder-files', (req, res) => {
+    try {
+        const folderPath = path.join(__dirname, 'public/images/new-folder');
+        
+        if (!fs.existsSync(folderPath)) {
+            return res.json({ files: [] });
+        }
+
+        const files = fs.readdirSync(folderPath)
+            .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
+            .map(filename => {
+                const filePath = path.join(folderPath, filename);
+                const stats = fs.statSync(filePath);
+                return {
+                    filename,
+                    path: `/images/new-folder/${filename}`,
+                    size: stats.size,
+                    uploadedAt: stats.ctime.toLocaleString('ko-KR')
+                };
+            })
+            .sort((a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+
+        res.json({
+            success: true,
+            count: files.length,
+            files
+        });
+
+    } catch (error) {
+        console.error('파일 목록 조회 오류:', error);
+        res.status(500).json({
+            success: false,
+            message: '파일 목록을 조회할 수 없습니다.'
+        });
+    }
+});
+
+// Admin page for file upload
+app.get('/admin', (req, res) => {
+    res.render('admin', {
+        title: '벨리코 관리자 - 파일 업로드',
+        description: '새 폴더 이미지 업로드'
     });
 });
 

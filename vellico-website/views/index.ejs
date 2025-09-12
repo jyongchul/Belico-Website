@@ -26,6 +26,7 @@
                 <li><a href="#stores">매장안내</a></li>
                 <li><a href="#process">제작과정</a></li>
                 <li><a href="#uses">활용사례</a></li>
+                <li><a href="#new-uploads">최신 업로드</a></li>
                 <li><a href="#media">갤러리</a></li>
                 <li><a href="#statistics">실시간 현황</a></li>
                 <li><a href="#contact" class="contact-btn">문의하기</a></li>
@@ -623,6 +624,26 @@
         </div>
     </section>
 
+    <!-- New Uploads Section -->
+    <section id="new-uploads" class="new-uploads-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>최신 업로드</h2>
+                <p>새로 추가된 벨리코 제품 및 사례들</p>
+            </div>
+            
+            <div class="new-uploads-grid" data-aos="fade-up">
+                <div id="new-uploads-content" class="uploads-grid">
+                    <!-- 동적으로 로드될 새 폴더 이미지들 -->
+                    <div class="no-uploads-message">
+                        <p>아직 업로드된 이미지가 없습니다.</p>
+                        <p>관리자 패널에서 이미지를 업로드해주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Customer Products Section -->
     <section id="customer-products" class="customer-products-section">
         <div class="container">
@@ -1168,10 +1189,68 @@
             }
         }
 
+        // Load new folder uploads
+        async function loadNewFolderUploads() {
+            try {
+                const response = await fetch('/api/new-folder-files');
+                const result = await response.json();
+                
+                const uploadsContainer = document.getElementById('new-uploads-content');
+                
+                if (result.success && result.files.length > 0) {
+                    // Hide no-uploads message
+                    const noUploadsMessage = uploadsContainer.querySelector('.no-uploads-message');
+                    if (noUploadsMessage) {
+                        noUploadsMessage.style.display = 'none';
+                    }
+                    
+                    // Create grid for uploaded images
+                    const uploadsGrid = result.files.map((file, index) => `
+                        <div class="upload-item" data-aos="zoom-in" data-aos-delay="${index * 100}">
+                            <div class="upload-image">
+                                <img src="${file.path}" alt="새 폴더 업로드 이미지" loading="lazy">
+                            </div>
+                            <div class="upload-info">
+                                <h4>${file.filename}</h4>
+                                <p>업로드: ${file.uploadedAt}</p>
+                                <span class="upload-size">${(file.size / 1024).toFixed(2)} KB</span>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    uploadsContainer.innerHTML = `
+                        <div class="uploads-grid">
+                            ${uploadsGrid}
+                        </div>
+                    `;
+                } else {
+                    // Show no-uploads message
+                    uploadsContainer.innerHTML = `
+                        <div class="no-uploads-message">
+                            <p>아직 업로드된 이미지가 없습니다.</p>
+                            <p><a href="/admin" style="color: #007bff;">관리자 패널</a>에서 이미지를 업로드해주세요.</p>
+                        </div>
+                    `;
+                }
+                
+            } catch (error) {
+                console.error('Error loading new folder uploads:', error);
+                document.getElementById('new-uploads-content').innerHTML = `
+                    <div class="no-uploads-message">
+                        <p>이미지 로딩 중 오류가 발생했습니다.</p>
+                    </div>
+                `;
+            }
+        }
+
         // Load statistics on page load and refresh every 30 seconds
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(loadStatistics, 2000); // Load after page animations
             setInterval(loadStatistics, 30000); // Refresh every 30 seconds
+            
+            // Load new folder uploads
+            setTimeout(loadNewFolderUploads, 1500);
+            setInterval(loadNewFolderUploads, 60000); // Refresh every minute
         });
 
         // Smooth scrolling for navigation links

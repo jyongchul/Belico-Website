@@ -566,14 +566,13 @@ body {
 
 /* Floating Cards */
 .floating-cards {
-    position: absolute;
-    right: -20px;
-    top: 5%;
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 20px;
+    align-items: flex-end;
     z-index: 5;
-    pointer-events: none;
 }
 
 .floating-card {
@@ -584,10 +583,10 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    max-width: 260px;
-    transform: translateY(-5px) scale(1);
+    max-width: 280px;
+    width: 100%;
+    transform: translateY(0) scale(1);
     transition: all 0.3s ease;
-    pointer-events: auto;
     position: relative;
 }
 
@@ -795,17 +794,19 @@ body {
     }
 
     .floating-cards {
-        position: relative;
-        right: auto;
-        top: auto;
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
-        margin-top: 20px;
+        align-items: center;
+        margin-top: 30px;
+        gap: 20px;
     }
 
     .floating-card {
         max-width: 300px;
+        width: auto;
+        flex: 1;
+        min-width: 250px;
     }
 }
 
@@ -863,6 +864,15 @@ body {
 
     .floating-cards {
         flex-direction: column;
+        align-items: center;
+        margin-top: 25px;
+        gap: 15px;
+    }
+
+    .floating-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: auto;
     }
 }
 

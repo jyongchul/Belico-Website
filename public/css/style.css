@@ -192,7 +192,8 @@ body {
     padding: 120px 0 80px;
     background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 50%, #f5f7fa 100%);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    z-index: 1;
 }
 
 .hero-background {
@@ -522,6 +523,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow: visible;
+    z-index: 2;
 }
 
 .hero-image-stack {
@@ -564,12 +567,13 @@ body {
 /* Floating Cards */
 .floating-cards {
     position: absolute;
-    right: -30px;
-    top: 10%;
+    right: -20px;
+    top: 5%;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    z-index: 10;
+    z-index: 5;
+    pointer-events: none;
 }
 
 .floating-card {
@@ -580,13 +584,15 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    max-width: 280px;
-    transform: translateX(0);
+    max-width: 260px;
+    transform: translateY(-5px) scale(1);
     transition: all 0.3s ease;
+    pointer-events: auto;
+    position: relative;
 }
 
 .floating-card:hover {
-    transform: translateX(-10px);
+    transform: translateY(-10px) scale(1.02);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -882,8 +888,11 @@ body {
 
 /* Technology Section */
 .technology-section {
-    padding: 80px 0;
+    padding: 120px 0 80px;
     background: white;
+    position: relative;
+    z-index: 10;
+    margin-top: 60px;
 }
 
 .tech-card {

@@ -3971,16 +3971,6 @@ html {
     border-radius: 2px;
 }
 
-.connector-arrow {
-    position: absolute;
-    color: #2c5aa0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    background: white;
-    padding: 4px 8px;
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(44, 90, 160, 0.2);
-}
 
 .journey-summary {
     margin-top: 50px;
@@ -4900,9 +4890,6 @@ html {
         height: 30px;
     }
 
-    .connector-arrow {
-        font-size: 1.2rem;
-    }
 
     .summary-card {
         padding: 25px 20px;

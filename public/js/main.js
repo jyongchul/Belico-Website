@@ -187,25 +187,29 @@ function initHeroParallax() {
 
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
+        const parallax = scrolled * 0.2; // Reduced parallax intensity
 
         if (scrolled < window.innerHeight) {
             heroSection.style.transform = `translateY(${parallax}px)`;
+        } else {
+            heroSection.style.transform = 'translateY(0)'; // Reset when out of view
         }
     });
 }
 
-// Floating cards hover enhancements
-function initFloatingCards() {
-    const floatingCards = document.querySelectorAll('.floating-card');
+// Tech cards hover enhancements
+function initTechCards() {
+    const techCards = document.querySelectorAll('.tech-card');
 
-    floatingCards.forEach(card => {
+    techCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.05)';
+            this.style.transform = 'translateY(-3px)';
+            this.style.borderLeftColor = '#2c5aa0';
         });
 
         card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(-5px) scale(1)';
+            this.style.transform = 'translateY(0)';
+            this.style.borderLeftColor = 'transparent';
         });
     });
 }
@@ -216,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         initVideoModal();
         initHeroParallax();
-        initFloatingCards();
+        initTechCards();
     }, 100);
 });
 

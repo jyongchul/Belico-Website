@@ -128,55 +128,63 @@ if (contactForm) {
 }
 
 // Video Modal Functions
+function openVideoModal() {
+    const videoModal = document.getElementById('videoModal');
+    const videoFrame = document.getElementById('videoFrame');
+
+    if (videoModal) {
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Load video when modal opens - 벨리코 제작 과정 영상
+        if (videoFrame) {
+            // 실제 제작 과정 영상 URL (예시 - 실제로는 벨리코 제작 과정 영상으로 교체)
+            videoFrame.src = 'https://www.youtube.com/embed/kJQP7kiw5Fk?si=example&autoplay=1';
+            // 또는 벨리코 실제 영상이 있다면:
+            // videoFrame.src = 'https://www.youtube.com/embed/ACTUAL_BELICO_VIDEO_ID?autoplay=1';
+        }
+    }
+}
+
+function closeVideoModal() {
+    const videoModal = document.getElementById('videoModal');
+    const videoFrame = document.getElementById('videoFrame');
+
+    if (videoModal) {
+        videoModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+
+        // Stop video playback
+        if (videoFrame) {
+            videoFrame.src = '';
+        }
+    }
+}
+
 function initVideoModal() {
-    const videoBtn = document.querySelector('.video-btn');
-    const videoModal = document.querySelector('.video-modal');
-    const closeBtn = document.querySelector('.close-modal');
-    const videoFrame = document.querySelector('.video-frame iframe');
+    const videoModal = document.getElementById('videoModal');
+    const videoOverlay = document.querySelector('.video-modal-overlay');
 
-    if (videoBtn && videoModal && closeBtn) {
-        videoBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            videoModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            // Add video URL when modal opens
-            if (videoFrame && !videoFrame.src) {
-                videoFrame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
-            }
-        });
-
-        closeBtn.addEventListener('click', function() {
-            videoModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-
-            // Remove video URL to stop playback
-            if (videoFrame) {
-                videoFrame.src = '';
-            }
-        });
-
-        // Close modal on backdrop click
-        videoModal.addEventListener('click', function(e) {
-            if (e.target === videoModal) {
-                videoModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-                if (videoFrame) {
-                    videoFrame.src = '';
-                }
-            }
-        });
-
-        // Close modal on ESC key
+    if (videoModal) {
+        // Close on ESC key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && videoModal.classList.contains('active')) {
-                videoModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-                if (videoFrame) {
-                    videoFrame.src = '';
-                }
+                closeVideoModal();
             }
         });
+
+        // Close on overlay click
+        if (videoOverlay) {
+            videoOverlay.addEventListener('click', closeVideoModal);
+        }
+
+        // Prevent modal content click from closing
+        const modalContent = document.querySelector('.video-modal-content');
+        if (modalContent) {
+            modalContent.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
     }
 }
 

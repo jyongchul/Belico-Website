@@ -174,12 +174,50 @@
     </section>
 
     <!-- Video Modal -->
-    <div id="videoModal" class="video-modal" style="display: none;">
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-overlay" onclick="closeVideoModal()"></div>
         <div class="video-modal-content">
-            <span class="video-close" onclick="closeVideoModal()">&times;</span>
+            <div class="video-header">
+                <h3>벨리코 맞춤형 깔창 제작 과정</h3>
+                <button class="video-close-btn" onclick="closeVideoModal()">
+                    <span>&times;</span>
+                </button>
+            </div>
             <div class="video-container">
-                <p>실제 구현시 제작 과정 영상이 재생됩니다.</p>
-                <button onclick="closeVideoModal()" class="btn-primary">닫기</button>
+                <div class="video-wrapper">
+                    <iframe
+                        id="videoFrame"
+                        src=""
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-description">
+                    <h4>📋 제작 과정 안내</h4>
+                    <div class="process-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <span class="step-text">3D 족부 스캔 (5분)</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">압력 분석 및 설계 (5분)</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">맞춤형 깔창 제작 (5분)</span>
+                        </div>
+                    </div>
+                    <p class="video-note">
+                        <strong>⏱️ 총 소요시간:</strong> 약 15분<br>
+                        <strong>🎯 정밀도:</strong> 0.1mm 수준의 개인 맞춤형
+                    </p>
+                </div>
+            </div>
+            <div class="video-footer">
+                <button onclick="closeVideoModal()" class="btn-secondary">닫기</button>
+                <a href="reservation.html" class="btn-primary">지금 예약하기</a>
             </div>
         </div>
     </div>

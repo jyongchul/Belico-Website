@@ -1,0 +1,77 @@
+<!-- 연구 자료에서 언급된: "insole molding device (as used by Sidas brand) where heated insole blanks are shaped to the individual's foot" -->
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="deviceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e9ecef;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dee2e6;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="heatGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff9999;stop-opacity:0.2" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" font-family="Arial, sans-serif" font-size="20" fill="#2c5aa0" text-anchor="middle" font-weight="bold">벨리코 깔창 몰딩 장비</text>
+  <text x="300" y="50" font-family="Arial, sans-serif" font-size="14" fill="#666" text-anchor="middle">(Vellico Insole Molding Device)</text>
+  
+  <!-- Main Device Body -->
+  <rect x="100" y="100" width="400" height="180" fill="url(#deviceGrad)" stroke="#2c5aa0" stroke-width="3" rx="15"/>
+  
+  <!-- Control Panel -->
+  <rect x="120" y="120" width="150" height="60" fill="#2c5aa0" rx="8"/>
+  <text x="195" y="140" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">온도 조절</text>
+  <text x="195" y="155" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Temperature</text>
+  <text x="195" y="170" font-family="Arial, sans-serif" font-size="14" fill="#87ceeb" text-anchor="middle" font-weight="bold">85°C</text>
+  
+  <!-- Heating Elements -->
+  <rect x="300" y="130" width="180" height="40" fill="#343a40" rx="5"/>
+  <rect x="310" y="135" width="160" height="8" fill="url(#heatGlow)" rx="4"/>
+  <rect x="310" y="147" width="160" height="8" fill="url(#heatGlow)" rx="4"/>
+  <rect x="310" y="159" width="160" height="8" fill="url(#heatGlow)" rx="4"/>
+  
+  <!-- Molding Cushions (Blue gel pads) -->
+  <ellipse cx="200" cy="220" rx="60" ry="25" fill="#74b9ff" opacity="0.8"/>
+  <ellipse cx="400" cy="220" rx="60" ry="25" fill="#74b9ff" opacity="0.8"/>
+  
+  <!-- Heated Insole Blanks -->
+  <path d="M160 210 Q200 200 220 215 Q225 225 220 235 Q200 250 180 255 Q160 250 150 235 Q145 225 150 215 Z" 
+        fill="#2c5aa0" opacity="0.7" stroke="#1e3f73" stroke-width="2"/>
+  <path d="M360 210 Q400 200 420 215 Q425 225 420 235 Q400 250 380 255 Q360 250 350 235 Q345 225 350 215 Z" 
+        fill="#2c5aa0" opacity="0.7" stroke="#1e3f73" stroke-width="2"/>
+  
+  <!-- Foot Imprints (showing where customer's feet would go) -->
+  <path d="M160 210 Q200 200 220 215 Q225 225 220 235 Q200 250 180 255 Q160 250 150 235 Q145 225 150 215 Z" 
+        fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5"/>
+  <path d="M360 210 Q400 200 420 215 Q425 225 420 235 Q400 250 380 255 Q360 250 350 235 Q345 225 350 215 Z" 
+        fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Pressure Indicators -->
+  <circle cx="185" cy="225" r="3" fill="#ff0000"/>
+  <circle cx="195" cy="235" r="3" fill="#ff0000"/>
+  <circle cx="385" cy="225" r="3" fill="#ff0000"/>
+  <circle cx="395" cy="235" r="3" fill="#ff0000"/>
+  
+  <!-- Device Legs/Support -->
+  <rect x="130" y="280" width="15" height="40" fill="#495057"/>
+  <rect x="180" y="280" width="15" height="40" fill="#495057"/>
+  <rect x="405" y="280" width="15" height="40" fill="#495057"/>
+  <rect x="455" y="280" width="15" height="40" fill="#495057"/>
+  
+  <!-- Status Lights -->
+  <circle cx="450" cy="130" r="6" fill="#28a745"/>
+  <text x="470" y="135" font-family="Arial, sans-serif" font-size="10" fill="#28a745">가동중</text>
+  
+  <!-- Process Steps Arrow -->
+  <path d="M50 350 L80 350 L75 345 M80 350 L75 355" stroke="#2c5aa0" stroke-width="2" fill="none"/>
+  <text x="90" y="355" font-family="Arial, sans-serif" font-size="12" fill="#2c5aa0">1. 가열된 깔창을 젤 패드 위에 배치</text>
+  
+  <path d="M50 370 L80 370 L75 365 M80 370 L75 375" stroke="#2c5aa0" stroke-width="2" fill="none"/>
+  <text x="90" y="375" font-family="Arial, sans-serif" font-size="12" fill="#2c5aa0">2. 고객이 발을 올려 개인 형태로 성형</text>
+  
+  <path d="M350 350 L380 350 L375 345 M380 350 L375 355" stroke="#2c5aa0" stroke-width="2" fill="none"/>
+  <text x="390" y="355" font-family="Arial, sans-serif" font-size="12" fill="#2c5aa0">3. 냉각 후 완벽한 맞춤 깔창 완성</text>
+</svg>

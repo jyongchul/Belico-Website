@@ -1,0 +1,97 @@
+<!-- 벨리코 맞춤형 깔창 - 연구 자료 기반 제품 이미지 -->
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c5aa0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#74b9ff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="insoleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="archSupport" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#2c5aa0;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#74b9ff;stop-opacity:0.4" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="400" y="60" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" font-weight="bold">벨리코 맞춤형 깔창</text>
+  <text x="400" y="90" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">Vellico Custom Insoles</text>
+  <text x="400" y="115" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.9">개인 맞춤 기술로 발 건강과 편안함을 제공</text>
+  
+  <!-- Main Insole (Left) -->
+  <g id="leftInsole">
+    <!-- Base insole shape -->
+    <path d="M200 180 Q280 160 320 200 Q330 260 325 320 Q320 380 310 420 Q295 450 275 470 Q250 485 225 490 Q200 485 180 470 Q165 450 155 420 Q150 380 155 320 Q160 260 170 220 Q180 200 200 180 Z" 
+          fill="url(#insoleGrad)" stroke="#2c5aa0" stroke-width="3"/>
+    
+    <!-- Arch support area -->
+    <ellipse cx="240" cy="280" rx="35" ry="60" fill="url(#archSupport)"/>
+    
+    <!-- Heel cushion -->
+    <ellipse cx="235" cy="450" rx="25" ry="35" fill="#74b9ff" opacity="0.6"/>
+    
+    <!-- Metatarsal pad -->
+    <ellipse cx="265" cy="220" rx="20" ry="25" fill="#2c5aa0" opacity="0.5"/>
+    
+    <!-- Vellico logo on insole -->
+    <text x="240" y="350" font-family="Arial, sans-serif" font-size="16" fill="#2c5aa0" text-anchor="middle" font-weight="bold">VELLICO</text>
+    <text x="240" y="370" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">맞춤형</text>
+  </g>
+  
+  <!-- Main Insole (Right) -->
+  <g id="rightInsole">
+    <!-- Base insole shape -->
+    <path d="M480 180 Q560 160 600 200 Q610 260 605 320 Q600 380 590 420 Q575 450 555 470 Q530 485 505 490 Q480 485 460 470 Q445 450 435 420 Q430 380 435 320 Q440 260 450 220 Q460 200 480 180 Z" 
+          fill="url(#insoleGrad)" stroke="#2c5aa0" stroke-width="3"/>
+    
+    <!-- Arch support area -->
+    <ellipse cx="520" cy="280" rx="35" ry="60" fill="url(#archSupport)"/>
+    
+    <!-- Heel cushion -->
+    <ellipse cx="515" cy="450" rx="25" ry="35" fill="#74b9ff" opacity="0.6"/>
+    
+    <!-- Metatarsal pad -->
+    <ellipse cx="545" cy="220" rx="20" ry="25" fill="#2c5aa0" opacity="0.5"/>
+    
+    <!-- Vellico logo on insole -->
+    <text x="520" y="350" font-family="Arial, sans-serif" font-size="16" fill="#2c5aa0" text-anchor="middle" font-weight="bold">VELLICO</text>
+    <text x="520" y="370" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">맞춤형</text>
+  </g>
+  
+  <!-- Feature callouts -->
+  <g id="features">
+    <!-- 3D scanning icon -->
+    <circle cx="100" cy="200" r="30" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="100" y="190" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">3D</text>
+    <text x="100" y="210" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">스캔</text>
+    <text x="100" y="250" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">3D 족형 스캔</text>
+    
+    <!-- Pressure analysis icon -->
+    <circle cx="700" cy="200" r="30" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="700" y="190" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">📊</text>
+    <text x="700" y="210" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">분석</text>
+    <text x="700" y="250" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">족압 분석</text>
+    
+    <!-- Custom fit icon -->
+    <circle cx="100" cy="400" r="30" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="100" y="390" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">🎯</text>
+    <text x="100" y="410" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">맞춤</text>
+    <text x="100" y="450" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">개인 맞춤 제작</text>
+    
+    <!-- Posture correction icon -->
+    <circle cx="700" cy="400" r="30" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="700" y="390" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle">🏥</text>
+    <text x="700" y="410" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">교정</text>
+    <text x="700" y="450" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">자세 교정</text>
+  </g>
+  
+  <!-- Price information -->
+  <rect x="300" y="140" width="200" height="30" fill="rgba(255,255,255,0.9)" rx="15"/>
+  <text x="400" y="160" font-family="Arial, sans-serif" font-size="14" fill="#2c5aa0" text-anchor="middle" font-weight="bold">벨리코 맞춤 인솔 4종 - ₩198,000</text>
+</svg>

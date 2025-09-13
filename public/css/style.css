@@ -3955,21 +3955,6 @@ html {
     box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
 }
 
-.journey-connector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: -10px 0;
-    position: relative;
-    z-index: 1;
-}
-
-.connector-line {
-    width: 2px;
-    height: 40px;
-    background: linear-gradient(180deg, #2c5aa0, #4ade80);
-    border-radius: 2px;
-}
 
 
 .journey-summary {
@@ -4886,9 +4871,6 @@ html {
         font-size: 0.95rem;
     }
 
-    .connector-line {
-        height: 30px;
-    }
 
 
     .summary-card {

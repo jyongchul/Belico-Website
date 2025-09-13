@@ -122,9 +122,4 @@ if (contactForm) {
     });
 }
 
-// Smooth scrolling
-html {
-    scroll-behavior: smooth;
-}
-
 console.log('벨리코 웹사이트가 로드되었습니다.');

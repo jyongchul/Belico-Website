@@ -872,54 +872,161 @@ body {
     color: #2c5aa0;
 }
 
-.process-steps {
+/* Manufacturing Flow Styles */
+.manufacturing-flow {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #e1e8f5;
+}
+
+.flow-header {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.step {
-    display: grid;
-    grid-template-columns: 50px 1fr;
-    gap: 20px;
     align-items: center;
-    padding: 18px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    border-left: 3px solid transparent;
+    gap: 12px;
+    margin-bottom: 25px;
+    text-align: left;
 }
 
-.step-number {
+.flow-icon {
     background: linear-gradient(135deg, #2c5aa0, #1e3f70);
     color: white;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+}
+
+.flow-header h4 {
+    color: #2c5aa0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #2c5aa0, #1e3f70);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.flow-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+}
+
+.timeline-dot {
+    background: linear-gradient(135deg, #2c5aa0, #1e3f70);
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(44, 90, 160, 0.3);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.dot-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+}
+
+.timeline-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f4f8;
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    border: 10px solid transparent;
+    border-right-color: white;
+    z-index: 1;
+}
+
+.timeline-content h5 {
+    color: #2c5aa0;
     font-size: 1.1rem;
-    box-shadow: 0 2px 8px rgba(44, 90, 160, 0.3);
-    justify-self: center;
+    font-weight: 700;
+    margin: 0 0 8px 0;
 }
 
-.step-text {
-    font-size: 1rem;
-    color: #333;
-    font-weight: 600;
+.timeline-content p {
+    color: #555;
+    font-size: 0.95rem;
     line-height: 1.4;
-    justify-self: start;
-    align-self: center;
+    margin: 0 0 12px 0;
 }
 
-.step:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-left-color: #2c5aa0;
+.time-badge {
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+}
+
+.timeline-connector {
+    position: absolute;
+    left: 27px;
+    top: 56px;
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(180deg, #2c5aa0, #4ade80);
+    z-index: 1;
+}
+
+.timeline-item:last-child .timeline-connector {
+    display: none;
+}
+
+.flow-result {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.result-highlight {
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+}
+
+.highlight-text {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.highlight-desc {
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 
 .video-note {
@@ -997,28 +1104,60 @@ body {
         padding: 20px;
     }
 
-    .process-steps {
-        gap: 10px;
+    .manufacturing-flow {
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    .flow-header {
+        margin-bottom: 20px;
+    }
+
+    .flow-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .flow-header h4 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-dot {
+        width: 48px;
+        height: 48px;
+    }
+
+    .dot-icon {
+        font-size: 1.3rem;
+    }
+
+    .timeline-content {
+        padding: 16px;
+    }
+
+    .timeline-content h5 {
+        font-size: 1rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+
+    .time-badge {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+
+    .result-highlight {
+        padding: 14px 20px;
+    }
+
+    .highlight-text {
+        font-size: 1rem;
     }
 
     .video-description h4 {
         font-size: 1rem;
-    }
-
-    .step {
-        grid-template-columns: 45px 1fr;
-        gap: 15px;
-        padding: 15px;
-    }
-
-    .step-number {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
-
-    .step-text {
-        font-size: 0.95rem;
     }
 
     .video-footer {

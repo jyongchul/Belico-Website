@@ -1,0 +1,78 @@
+<!-- 연구 자료에서 언급된: "foot pressure analysis display showing heat-map footprints that reveal weight distribution" -->
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="highPressure" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff4444;stop-opacity:0.7" />
+    </radialGradient>
+    <radialGradient id="mediumPressure" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff8800;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffaa44;stop-opacity:0.7" />
+    </radialGradient>
+    <radialGradient id="lowPressure" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#44ff44;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#88ff88;stop-opacity:0.7" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#1a1a1a"/>
+  
+  <!-- Title -->
+  <text x="250" y="30" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="bold">족압 분석 결과 (Foot Pressure Analysis)</text>
+  
+  <!-- Left Foot Heat Map -->
+  <g id="leftFoot">
+    <!-- Foot outline -->
+    <path d="M120 80 Q160 70 180 100 Q185 140 180 180 Q175 220 165 250 Q155 280 140 300 Q125 320 110 330 Q95 325 85 310 Q80 290 85 270 Q90 250 95 230 Q100 210 105 190 Q110 170 115 150 Q118 130 120 110 Z" 
+          fill="#333" stroke="#555" stroke-width="2"/>
+    
+    <!-- High pressure areas (heel and ball of foot) -->
+    <ellipse cx="140" cy="100" rx="20" ry="30" fill="url(#highPressure)"/>
+    <ellipse cx="135" cy="280" rx="15" ry="25" fill="url(#highPressure)"/>
+    
+    <!-- Medium pressure areas -->
+    <ellipse cx="150" cy="150" rx="15" ry="20" fill="url(#mediumPressure)"/>
+    <ellipse cx="120" cy="200" rx="12" ry="18" fill="url(#mediumPressure)"/>
+    
+    <!-- Low pressure areas -->
+    <ellipse cx="110" cy="170" rx="10" ry="15" fill="url(#lowPressure)"/>
+  </g>
+  
+  <!-- Right Foot Heat Map -->
+  <g id="rightFoot">
+    <!-- Foot outline -->
+    <path d="M300 80 Q340 70 360 100 Q365 140 360 180 Q355 220 345 250 Q335 280 320 300 Q305 320 290 330 Q275 325 265 310 Q260 290 265 270 Q270 250 275 230 Q280 210 285 190 Q290 170 295 150 Q298 130 300 110 Z" 
+          fill="#333" stroke="#555" stroke-width="2"/>
+    
+    <!-- High pressure areas -->
+    <ellipse cx="320" cy="100" rx="20" ry="30" fill="url(#highPressure)"/>
+    <ellipse cx="315" cy="280" rx="15" ry="25" fill="url(#highPressure)"/>
+    
+    <!-- Medium pressure areas -->
+    <ellipse cx="330" cy="150" rx="15" ry="20" fill="url(#mediumPressure)"/>
+    <ellipse cx="300" cy="200" rx="12" ry="18" fill="url(#mediumPressure)"/>
+    
+    <!-- Low pressure areas -->
+    <ellipse cx="290" cy="170" rx="10" ry="15" fill="url(#lowPressure)"/>
+  </g>
+  
+  <!-- Pressure Scale -->
+  <g id="pressureScale">
+    <text x="450" y="80" font-family="Arial, sans-serif" font-size="12" fill="white">압력</text>
+    <rect x="440" y="90" width="20" height="80" fill="url(#pressureGradient)"/>
+    <defs>
+      <linearGradient id="pressureGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#ff0000;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#ff8800;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#44ff44;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <text x="465" y="95" font-family="Arial, sans-serif" font-size="10" fill="white">고</text>
+    <text x="465" y="135" font-family="Arial, sans-serif" font-size="10" fill="white">중</text>
+    <text x="465" y="175" font-family="Arial, sans-serif" font-size="10" fill="white">저</text>
+  </g>
+  
+  <!-- Footer Text -->
+  <text x="250" y="370" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">벨리코 족압 분석을 통한 개인별 압력 분산점 확인</text>
+</svg>

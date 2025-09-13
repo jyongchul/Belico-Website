@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>벨리코 맞춤형 깔창 - 개인 맞춤 발 건강 솔루션</title>
+    <meta name="description" content="3D 스캔 기술로 제작하는 맞춤형 깔창, 벨리코">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>벨리코</h2>
+                <span>VELLICO</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#product">제품소개</a></li>
+                <li><a href="#reviews">고객후기</a></li>
+                <li><a href="#comparison">비교분석</a></li>
+                <li><a href="#stores">매장안내</a></li>
+                <li><a href="#process">제작과정</a></li>
+                <li><a href="#uses">활용사례</a></li>
+                <li><a href="#media">갤러리</a></li>
+                <li><a href="#contact" class="contact-btn">문의하기</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>개인 맞춤 기술로 <br><span class="highlight">발 건강과 편안함을 제공</span></h1>
+                <p class="hero-subtitle">3D 스캔과 족압 분석 기술로 제작하는<br>세계 유일의 개인 맞춤형 깔창</p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">🔬</div>
+                        <span>3D 족형 스캔</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚖️</div>
+                        <span>족압 분석</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <span>개인 맞춤 제작</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🏥</div>
+                        <span>자세 교정</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">무료 상담 신청</a>
+                    <a href="#process" class="btn btn-secondary">제작 과정 보기</a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left">
+                <img src="public/images/hero-insole.jpg" alt="벨리코 맞춤형 깔창" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product" class="product-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>제품소개</h2>
+                <p>첨단 기술로 만드는 개인 맞춤형 깔창</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-icon">🔬</div>
+                    <h3>3D 스캔 기술</h3>
+                    <p>고정밀 3D 스캐너로 발의 모든 부위를 정확히 측정하여 완벽한 맞춤형 깔창을 제작합니다.</p>
+                </div>
+                <div class="product-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-icon">🎯</div>
+                    <h3>족압 분석</h3>
+                    <p>족압 분석을 통해 압력 분산점을 파악하고 개인별 보행 패턴에 맞는 설계를 진행합니다.</p>
+                </div>
+                <div class="product-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="product-icon">🏥</div>
+                    <h3>자세 교정</h3>
+                    <p>발의 올바른 정렬을 통해 무릎, 허리, 척추의 자세를 자연스럽게 교정합니다.</p>
+                </div>
+                <div class="product-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="product-icon">💎</div>
+                    <h3>프리미엄 소재</h3>
+                    <p>의료용 등급의 고급 EVA 폼과 충격 흡수 소재로 내구성과 편안함을 동시에 제공합니다.</p>
+                </div>
+            </div>
+
+            <!-- Product Benefits -->
+            <div class="benefits-section" data-aos="fade-up">
+                <h3>벨리코 깔창의 주요 효과</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✅</div>
+                        <div class="benefit-content">
+                            <h4>족저근막염 완화</h4>
+                            <p>아치 지지로 족저근막의 부담을 줄여 통증을 완화합니다</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✅</div>
+                        <div class="benefit-content">
+                            <h4>무릎 통증 감소</h4>
+                            <p>올바른 발 정렬로 무릎 관절의 부담을 줄입니다</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✅</div>
+                        <div class="benefit-content">
+                            <h4>허리 통증 개선</h4>
+                            <p>척추 정렬 개선으로 허리 디스크 통증을 완화합니다</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✅</div>
+                        <div class="benefit-content">
+                            <h4>피로감 감소</h4>
+                            <p>균등한 압력 분산으로 장시간 서있어도 편안합니다</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>고객후기</h2>
+                <p>벨리코 고객들의 생생한 체험담</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p>"평발이라서 항상 발이 아팠는데, 벨리코 깔창 끼고부터 하루 종일 걸어도 발이 편해요."</p>
+                    <div class="review-author">
+                        <strong>김○○ (38세)</strong>
+                        <span>회사원</span>
+                    </div>
+                </div>
+                <div class="review-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p>"처음엔 가격이 비싸 망설였지만 직접 써보니 무릎 통증이 줄어서 투자할 가치가 있었습니다."</p>
+                    <div class="review-author">
+                        <strong>이○○ (45세)</strong>
+                        <span>교사</span>
+                    </div>
+                </div>
+                <div class="review-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p>"제 발에 꼭 맞게 만들어주니까 오래 서 있어도 피로감이 덜해요."</p>
+                    <div class="review-author">
+                        <strong>박○○ (29세)</strong>
+                        <span>은행원</span>
+                    </div>
+                </div>
+                <div class="review-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p>"마라톤 할 때 무릎 부담이 확실히 줄어들었어요. 기록도 향상됐습니다!"</p>
+                    <div class="review-author">
+                        <strong>최○○ (33세)</strong>
+                        <span>마라토너</span>
+                    </div>
+                </div>
+                <div class="review-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p>"자세가 확실히 교정되는 느낌입니다. 어깨와 목의 통증도 줄었어요."</p>
+                    <div class="review-author">
+                        <strong>정○○ (52세)</strong>
+                        <span>간호사</span>
+                    </div>
+                </div>
+                <div class="review-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p>"족저근막염으로 고생했는데 벨리코 깔창 사용 후 많이 좋아졌습니다."</p>
+                    <div class="review-author">
+                        <strong>한○○ (41세)</strong>
+                        <span>주부</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparison" class="comparison-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>경쟁제품 비교분석</h2>
+                <p>벨리코가 다른 깔창과 차별화되는 이유</p>
+            </div>
+            <div class="comparison-table" data-aos="fade-up">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>일반 깔창</th>
+                            <th>기성 기능성 깔창</th>
+                            <th class="highlight-column">벨리코 맞춤 깔창</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>가격</strong></td>
+                            <td>1-3만원</td>
+                            <td>3-8만원</td>
+                            <td class="highlight-column">19.8만원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>맞춤도</strong></td>
+                            <td>❌ 평균 사이즈</td>
+                            <td>△ 일부 조정 가능</td>
+                            <td class="highlight-column">✅ 100% 개인 맞춤</td>
+                        </tr>
+                        <tr>
+                            <td><strong>족압 분석</strong></td>
+                            <td>❌ 없음</td>
+                            <td>❌ 없음</td>
+                            <td class="highlight-column">✅ 전문 분석</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3D 스캔</strong></td>
+                            <td>❌ 없음</td>
+                            <td>❌ 없음</td>
+                            <td class="highlight-column">✅ 고정밀 스캔</td>
+                        </tr>
+                        <tr>
+                            <td><strong>자세 교정</strong></td>
+                            <td>❌ 제한적</td>
+                            <td>△ 부분적</td>
+                            <td class="highlight-column">✅ 전문적 교정</td>
+                        </tr>
+                        <tr>
+                            <td><strong>내구성</strong></td>
+                            <td>6개월</td>
+                            <td>1년</td>
+                            <td class="highlight-column">2-3년</td>
+                        </tr>
+                        <tr>
+                            <td><strong>A/S</strong></td>
+                            <td>❌ 없음</td>
+                            <td>△ 제한적</td>
+                            <td class="highlight-column">✅ 무료 A/S</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stores Section -->
+    <section id="stores" class="stores-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>매장 및 대리점 안내</h2>
+                <p>전국 어디서나 벨리코를 만나보세요</p>
+            </div>
+            
+            <div class="stores-content">
+                <div class="headquarters" data-aos="fade-up">
+                    <h3>🏢 벨리코 본사</h3>
+                    <div class="hq-info">
+                        <p><strong>주소:</strong> 대전광역시 동구</p>
+                        <p><strong>고객문의:</strong> <a href="tel:01048555991">010-4855-5991</a></p>
+                        <p><strong>카카오톡:</strong> <a href="#" class="kakao-link">@벨리코</a></p>
+                        <p><strong>운영시간:</strong> 평일 09:00-18:00 (주말·공휴일 휴무)</p>
+                    </div>
+                </div>
+
+                <div class="dealer-network" data-aos="fade-up" data-aos-delay="200">
+                    <h3>📍 전국 대리점 네트워크</h3>
+                    <p>전국 각지 대리점을 통해 발 측정 및 구매가 가능합니다.</p>
+                    
+                    <div class="dealers-grid">
+                        <div class="dealer-region">
+                            <h4>서울·경기</h4>
+                            <ul>
+                                <li>서울 강남센터 (준비중)</li>
+                                <li>서울 홍대센터 (준비중)</li>
+                                <li>수원 영통센터 (준비중)</li>
+                            </ul>
+                        </div>
+                        <div class="dealer-region">
+                            <h4>부산·경남</h4>
+                            <ul>
+                                <li>부산 센텀대리점 (준비중)</li>
+                                <li>창원 상남대리점 (준비중)</li>
+                            </ul>
+                        </div>
+                        <div class="dealer-region">
+                            <h4>대구·경북</h4>
+                            <ul>
+                                <li>대구 동성로 대리점 (준비중)</li>
+                                <li>경주 황리단길센터 (준비중)</li>
+                            </ul>
+                        </div>
+                        <div class="dealer-region">
+                            <h4>광주·전라</h4>
+                            <ul>
+                                <li>광주 상무센터 (준비중)</li>
+                                <li>전주 한옥마을센터 (준비중)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="dealer-notice">
+                        <p><strong>※ 대리점은 순차적으로 오픈 예정입니다. 정확한 오픈 일정은 본사로 문의해주세요.</strong></p>
+                    </div>
+                </div>
+
+                <div class="partnership" data-aos="fade-up" data-aos-delay="400">
+                    <div class="partnership-content">
+                        <h3>📢 벨리코 대리점 모집</h3>
+                        <p>건강한 미래를 함께 만들어갈 파트너를 찾습니다!</p>
+                        <ul class="partnership-benefits">
+                            <li>✅ 무점포 창업 가능</li>
+                            <li>✅ 전문 교육 및 장비 지원</li>
+                            <li>✅ 마케팅 지원</li>
+                            <li>✅ 지역별 독점 운영권</li>
+                        </ul>
+                        <div class="partnership-contact">
+                            <a href="#contact" class="btn btn-primary">대리점 문의하기</a>
+                            <a href="#" class="btn btn-secondary kakao-partnership">카카오톡 상담</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>맞춤 제작 과정</h2>
+                <p>과학적이고 체계적인 4단계 제작 과정</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>족압/발 모양 측정</h3>
+                        <p>3D 스캐너와 족압 판정 장치로 발을 정밀 분석합니다. 아치 형태, 압력 분산점, 보행 패턴을 종합적으로 검사합니다.</p>
+                        <div class="step-features">
+                            <span>고정밀 3D 스캔</span>
+                            <span>족압 분석</span>
+                            <span>보행 패턴 검사</span>
+                        </div>
+                    </div>
+                    <div class="step-image">
+                        <img src="public/images/step1-scan.jpg" alt="족압 측정 과정" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="process-step reverse" data-aos="fade-left" data-aos-delay="200">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>맞춤 설계</h3>
+                        <p>분석 데이터를 바탕으로 개인별 맞춤 깔창을 설계합니다. CAD 프로그램으로 정확한 형태를 디자인합니다.</p>
+                        <div class="step-features">
+                            <span>개인별 맞춤 설계</span>
+                            <span>CAD 정밀 디자인</span>
+                            <span>압력 분산 최적화</span>
+                        </div>
+                    </div>
+                    <div class="step-image">
+                        <img src="public/images/step2-design.jpg" alt="맞춤 설계 과정" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-right" data-aos-delay="300">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>제작 및 피팅</h3>
+                        <p>전문가가 고급 소재로 깔창을 제작하고 고객의 신발에 맞게 정밀 조정합니다.</p>
+                        <div class="step-features">
+                            <span>프리미엄 소재</span>
+                            <span>정밀 제작</span>
+                            <span>신발 맞춤 조정</span>
+                        </div>
+                    </div>
+                    <div class="step-image">
+                        <img src="public/images/step3-production.jpg" alt="제작 및 피팅 과정" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="process-step reverse" data-aos="fade-left" data-aos-delay="400">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>착용 & 사후관리</h3>
+                        <p>완성된 깔창을 착용해보고 필요시 미세 조정을 진행합니다. 사용법 안내와 지속적인 A/S를 제공합니다.</p>
+                        <div class="step-features">
+                            <span>착용감 확인</span>
+                            <span>미세 조정</span>
+                            <span>무료 A/S</span>
+                        </div>
+                    </div>
+                    <div class="step-image">
+                        <img src="public/images/step4-fitting.jpg" alt="착용 및 사후관리" loading="lazy">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="process-info" data-aos="fade-up">
+                <div class="info-item">
+                    <div class="info-icon">⏱️</div>
+                    <div class="info-content">
+                        <h4>소요시간</h4>
+                        <p>전체 과정 약 30분~1시간</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">🏠</div>
+                    <div class="info-content">
+                        <h4>당일 수령</h4>
+                        <p>대부분 당일 가져가실 수 있습니다</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">🔧</div>
+                    <div class="info-content">
+                        <h4>무료 A/S</h4>
+                        <p>1년간 무료 조정 서비스</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="uses" class="uses-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>활용사례</h2>
+                <p>다양한 환경에서 검증된 벨리코의 효과</p>
+            </div>
+            <div class="uses-grid">
+                <div class="use-case" data-aos="fade-up" data-aos-delay="100">
+                    <div class="use-icon">🏃‍♂️</div>
+                    <h3>스포츠</h3>
+                    <p><strong>예시:</strong> 마라톤 선수</p>
+                    <p>족저근막염 예방 및 기록 향상. 런닝 시 무릎과 발목의 부담을 줄여 더 오래, 더 편안하게 달릴 수 있습니다.</p>
+                    <div class="use-benefits">
+                        <span>부상 방지</span>
+                        <span>지구력 향상</span>
+                        <span>기록 개선</span>
+                    </div>
+                </div>
+
+                <div class="use-case" data-aos="fade-up" data-aos-delay="200">
+                    <div class="use-icon">🏥</div>
+                    <h3>의료</h3>
+                    <p><strong>예시:</strong> 무릎통증 환자</p>
+                    <p>보조치료로 통증 경감. 올바른 발 정렬로 무릎 관절의 스트레스를 줄여 자연치유를 돕습니다.</p>
+                    <div class="use-benefits">
+                        <span>통증 완화</span>
+                        <span>관절 보호</span>
+                        <span>재활 지원</span>
+                    </div>
+                </div>
+
+                <div class="use-case" data-aos="fade-up" data-aos-delay="300">
+                    <div class="use-icon">👨‍💼</div>
+                    <h3>직장인</h3>
+                    <p><strong>예시:</strong> 장시간 서서 일하는 교사</p>
+                    <p>발바닥·허리 피로 감소. 하루 8시간 서있어도 피로감이 현저히 줄어들어 업무 효율이 향상됩니다.</p>
+                    <div class="use-benefits">
+                        <span>피로 감소</span>
+                        <span>집중력 향상</span>
+                        <span>업무 효율</span>
+                    </div>
+                </div>
+
+                <div class="use-case" data-aos="fade-up" data-aos-delay="400">
+                    <div class="use-icon">👵</div>
+                    <h3>노약자</h3>
+                    <p><strong>예시:</strong> 무릎관절증 있는 어르신</p>
+                    <p>균형 감각 향상, 낙상 예방 도움. 안정적인 보행으로 자신감 있게 일상생활을 영위할 수 있습니다.</p>
+                    <div class="use-benefits">
+                        <span>균형감 향상</span>
+                        <span>낙상 예방</span>
+                        <span>보행 안정</span>
+                    </div>
+                </div>
+
+                <div class="use-case" data-aos="fade-up" data-aos-delay="500">
+                    <div class="use-icon">🚶‍♀️</div>
+                    <h3>일반인</h3>
+                    <p><strong>예시:</strong> 출퇴근하는 직장인</p>
+                    <p>자세 교정 및 일상 편안함. 대중교통 이용 시 오래 서있거나 걸어도 편안한 하루를 보낼 수 있습니다.</p>
+                    <div class="use-benefits">
+                        <span>자세 개선</span>
+                        <span>일상 편안함</span>
+                        <span>스트레스 완화</span>
+                    </div>
+                </div>
+
+                <div class="use-case" data-aos="fade-up" data-aos-delay="600">
+                    <div class="use-icon">👨‍⚕️</div>
+                    <h3>의료진</h3>
+                    <p><strong>예시:</strong> 간호사</p>
+                    <p>12시간 근무에도 발과 다리의 피로를 최소화. 환자 케어에 더욱 집중할 수 있는 환경을 만듭니다.</p>
+                    <div class="use-benefits">
+                        <span>장시간 근무</span>
+                        <span>피로 최소화</span>
+                        <span>업무 집중</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Products Section -->
+    <section id="customer-products" class="customer-products-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>고객 맞춤 제품</h2>
+                <p>실제 고객을 위해 제작된 벨리코 맞춤형 깔창들</p>
+            </div>
+            
+            <div class="customer-grid" data-aos="fade-up">
+                <div class="customer-item">
+                    <div class="customer-image">
+                        <img src="public/images/customer/KakaoTalk_20250910_180347963.jpg" alt="고객 맞춤 깔창 사례 1" loading="lazy">
+                    </div>
+                    <div class="customer-info">
+                        <h4>평발 교정 사례</h4>
+                        <p>20대 직장인을 위한 평발 교정 맞춤 깔창</p>
+                        <span class="customer-date">2024.09</span>
+                    </div>
+                </div>
+                
+                <div class="customer-item">
+                    <div class="customer-image">
+                        <img src="public/images/customer/KakaoTalk_20250910_180347963_01.jpg" alt="고객 맞춤 깔창 사례 2" loading="lazy">
+                    </div>
+                    <div class="customer-info">
+                        <h4>스포츠용 맞춤 깔창</h4>
+                        <p>마라톤 선수를 위한 고성능 맞춤 깔창</p>
+                        <span class="customer-date">2024.09</span>
+                    </div>
+                </div>
+                
+                <div class="customer-item">
+                    <div class="customer-image">
+                        <img src="public/images/customer/KakaoTalk_20250910_180347963_02.jpg" alt="고객 맞춤 깔창 사례 3" loading="lazy">
+                    </div>
+                    <div class="customer-info">
+                        <h4>족저근막염 케어</h4>
+                        <p>족저근막염 환자를 위한 특수 설계 깔창</p>
+                        <span class="customer-date">2024.09</span>
+                    </div>
+                </div>
+                
+                <div class="customer-item">
+                    <div class="customer-image">
+                        <img src="public/images/customer/KakaoTalk_20250910_180347963_03.jpg" alt="고객 맞춤 깔창 사례 4" loading="lazy">
+                    </div>
+                    <div class="customer-info">
+                        <h4>당뇨 환자용 깔창</h4>
+                        <p>당뇨 발 케어를 위한 압력 분산 깔창</p>
+                        <span class="customer-date">2024.09</span>
+                    </div>
+                </div>
+                
+                <div class="customer-item">
+                    <div class="customer-image">
+                        <img src="public/images/customer/KakaoTalk_20250910_180347963_04.jpg" alt="고객 맞춤 깔창 사례 5" loading="lazy">
+                    </div>
+                    <div class="customer-info">
+                        <h4>무지외반증 교정</h4>
+                        <p>무지외반증 환자를 위한 맞춤 교정 깔창</p>
+                        <span class="customer-date">2024.09</span>
+                    </div>
+                </div>
+                
+                <div class="customer-item">
+                    <div class="customer-image">
+                        <img src="public/images/customer/KakaoTalk_20250910_180347963_05.jpg" alt="고객 맞춤 깔창 사례 6" loading="lazy">
+                    </div>
+                    <div class="customer-info">
+                        <h4>노인 전용 깔창</h4>
+                        <p>고령자의 안전한 보행을 위한 깔창</p>
+                        <span class="customer-date">2024.09</span>
+                    </div>
+                </div>
+                
+                <div class="customer-item">
+                    <div class="customer-image">
+                        <img src="public/images/customer/KakaoTalk_20250911_172515500_04.jpg" alt="고객 맞춤 깔창 사례 7" loading="lazy">
+                    </div>
+                    <div class="customer-info">
+                        <h4>의료진 추천 깔창</h4>
+                        <p>의료진이 직접 추천하는 건강 깔창</p>
+                        <span class="customer-date">2024.09</span>
+                    </div>
+                </div>
+                
+                <div class="customer-item">
+                    <div class="customer-image">
+                        <img src="public/images/customer/KakaoTalk_20250911_172515500_05.jpg" alt="고객 맞춤 깔창 사례 8" loading="lazy">
+                    </div>
+                    <div class="customer-info">
+                        <h4>어린이 전용 깔창</h4>
+                        <p>성장기 어린이의 올바른 발 발달을 위한 깔창</p>
+                        <span class="customer-date">2024.09</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Gallery Section -->
+    <section id="media" class="media-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>미디어 갤러리</h2>
+                <p>벨리코의 제작 과정과 효과를 확인해보세요</p>
+            </div>
+            
+            <div class="media-tabs">
+                <button class="tab-button active" data-tab="images">제품 사진</button>
+                <button class="tab-button" data-tab="videos">동영상</button>
+                <button class="tab-button" data-tab="process">제작 과정</button>
+                <button class="tab-button" data-tab="customer">고객 제품</button>
+            </div>
+
+            <div class="media-content">
+                <div id="images" class="tab-content active">
+                    <div class="media-grid">
+                        <div class="media-item" data-aos="zoom-in">
+                            <img src="public/images/gallery/insole-main.jpg" alt="벨리코 맞춤형 깔창 메인" loading="lazy">
+                            <div class="media-overlay">
+                                <h4>벨리코 맞춤형 깔창</h4>
+                                <p>개인별 발 형태에 맞춘 완벽한 피팅</p>
+                            </div>
+                        </div>
+                        <div class="media-item" data-aos="zoom-in" data-aos-delay="100">
+                            <img src="public/images/gallery/pressure-analysis.jpg" alt="족압 분석 결과" loading="lazy">
+                            <div class="media-overlay">
+                                <h4>족압 분석 결과</h4>
+                                <p>개인별 압력 분산점을 정확히 파악</p>
+                            </div>
+                        </div>
+                        <div class="media-item" data-aos="zoom-in" data-aos-delay="200">
+                            <img src="public/images/gallery/3d-scan.jpg" alt="3D 발 스캔" loading="lazy">
+                            <div class="media-overlay">
+                                <h4>3D 발 스캔</h4>
+                                <p>고정밀 3D 스캐닝으로 정확한 측정</p>
+                            </div>
+                        </div>
+                        <div class="media-item" data-aos="zoom-in" data-aos-delay="300">
+                            <img src="public/images/gallery/materials.jpg" alt="프리미엄 소재" loading="lazy">
+                            <div class="media-overlay">
+                                <h4>프리미엄 소재</h4>
+                                <p>의료용 등급의 고급 EVA 폼 사용</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="videos" class="tab-content">
+                    <div class="video-grid">
+                        <div class="video-item" data-aos="fade-up">
+                            <div class="video-thumbnail">
+                                <img src="public/images/video-thumb-1.jpg" alt="벨리코 소개 영상" loading="lazy">
+                                <div class="play-button">▶️</div>
+                            </div>
+                            <h4>벨리코 기능성 신발 소개</h4>
+                            <p>최고의 손길로 만들어낸 편안함과 품격</p>
+                        </div>
+                        <div class="video-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="video-thumbnail">
+                                <img src="public/images/video-thumb-2.jpg" alt="제작 과정 영상" loading="lazy">
+                                <div class="play-button">▶️</div>
+                            </div>
+                            <h4>맞춤 깔창 제작 과정</h4>
+                            <p>3D 스캔부터 완성까지의 전 과정</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="process" class="tab-content">
+                    <div class="process-gallery">
+                        <div class="process-item" data-aos="fade-up">
+                            <div class="process-image-container">
+                                <img src="public/images/process/molding-device.jpg" alt="깔창 몰딩 장비" loading="lazy">
+                                <div class="process-caption">
+                                    <h4>깔창 몰딩 장비</h4>
+                                    <p>가열된 깔창을 개인의 발 형태에 맞게 성형하는 전문 장비</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="process-image-container">
+                                <img src="public/images/process/pressure-scan.jpg" alt="족압 스캔 장면" loading="lazy">
+                                <div class="process-caption">
+                                    <h4>족압 스캔 장면</h4>
+                                    <p>압력 분산을 색상으로 표시하여 문제점을 정확히 파악</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="customer" class="tab-content">
+                    <div class="customer-gallery-grid">
+                        <div class="customer-gallery-item" data-aos="zoom-in">
+                            <img src="public/images/customer/KakaoTalk_20250910_180347963_06.jpg" alt="평발 교정 맞춤 깔창" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>평발 교정 케이스</h4>
+                                <p>3D 스캔을 통한 완벽한 아치 지지 깔창</p>
+                                <span class="case-tag">교정 케이스</span>
+                            </div>
+                        </div>
+                        <div class="customer-gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                            <img src="public/images/customer/KakaoTalk_20250910_180347963_07.jpg" alt="스포츠용 맞춤 깔창" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>운동선수용 깔창</h4>
+                                <p>충격 흡수와 반발력을 최적화한 스포츠 깔창</p>
+                                <span class="case-tag">스포츠</span>
+                            </div>
+                        </div>
+                        <div class="customer-gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                            <img src="public/images/customer/KakaoTalk_20250910_180347963_08.jpg" alt="족저근막염 케어 깔창" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>족저근막염 케어</h4>
+                                <p>의료진과 협력한 족저근막염 전용 깔창</p>
+                                <span class="case-tag">의료</span>
+                            </div>
+                        </div>
+                        <div class="customer-gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                            <img src="public/images/customer/KakaoTalk_20250910_180347963_09.jpg" alt="직장인용 편안 깔창" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>직장인 케어 깔창</h4>
+                                <p>장시간 서서 일하는 직장인을 위한 피로감 완화</p>
+                                <span class="case-tag">일반</span>
+                            </div>
+                        </div>
+                        
+                        <div class="customer-gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                            <img src="public/images/customer/KakaoTalk_20250910_180347963_10.jpg" alt="하이킹용 깔창" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>하이킹 전용 깔창</h4>
+                                <p>등산과 하이킹을 위한 충격 완화 깔창</p>
+                                <span class="case-tag">아웃도어</span>
+                            </div>
+                        </div>
+                        
+                        <div class="customer-gallery-item" data-aos="zoom-in" data-aos-delay="500">
+                            <img src="public/images/customer/KakaoTalk_20250910_180347963_11.jpg" alt="학생용 깔창" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>학생 전용 깔창</h4>
+                                <p>성장기 청소년의 올바른 자세를 위한 깔창</p>
+                                <span class="case-tag">성장기</span>
+                            </div>
+                        </div>
+                        
+                        <div class="customer-gallery-item" data-aos="zoom-in" data-aos-delay="600">
+                            <img src="public/images/customer/KakaoTalk_20250911_172515500.jpg" alt="최신 고객 사례" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>최신 제작 사례</h4>
+                                <p>2024년 9월 최신 고객 맞춤 깔창</p>
+                                <span class="case-tag">최신</span>
+                            </div>
+                        </div>
+                        
+                        <div class="customer-gallery-item" data-aos="zoom-in" data-aos-delay="700">
+                            <img src="public/images/customer/KakaoTalk_20250911_172515500_01.jpg" alt="프리미엄 깔창" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>프리미엄 케이스</h4>
+                                <p>고급 소재와 기술이 적용된 프리미엄 깔창</p>
+                                <span class="case-tag">프리미엄</span>
+                            </div>
+                        </div>
+                        
+                        <div class="customer-gallery-item" data-aos="zoom-in" data-aos-delay="800">
+                            <img src="public/images/customer/KakaoTalk_20250911_172515500_02.jpg" alt="실버세대 깔창" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>실버세대 전용</h4>
+                                <p>고령자 안전 보행을 위한 특수 설계 깔창</p>
+                                <span class="case-tag">실버</span>
+                            </div>
+                        </div>
+                        
+                        <div class="customer-gallery-item" data-aos="zoom-in" data-aos-delay="900">
+                            <img src="public/images/customer/KakaoTalk_20250911_172515500_03.jpg" alt="여성 전용 깔창" loading="lazy">
+                            <div class="customer-overlay">
+                                <h4>여성 전용 케어</h4>
+                                <p>하이힐과 여성 신발에 최적화된 깔창</p>
+                                <span class="case-tag">여성</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>문의하기</h2>
+                <p>벨리코와 함께 건강한 발걸음을 시작하세요</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>전화 상담</h4>
+                            <p><a href="tel:01048555991">010-4855-5991</a></p>
+                            <span>평일 9:00-18:00</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-details">
+                            <h4>카카오톡 상담</h4>
+                            <p><a href="#" class="kakao-link">@벨리코</a></p>
+                            <span>빠른 답변 가능</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>본사 위치</h4>
+                            <p>대전광역시 동구</p>
+                            <span>방문 상담 가능 (예약 필수)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+                    <h3>무료 상담 신청</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="성함" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="연락처" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">상담 유형 선택</option>
+                                <option value="customer">고객 상담</option>
+                                <option value="dealer">대리점 문의</option>
+                                <option value="partnership">사업 제휴</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="문의 내용을 입력해주세요" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">상담 신청하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>벨리코</h3>
+                        <p>VELLICO</p>
+                    </div>
+                    <p class="footer-desc">개인 맞춤 기술로 발 건강과 편안함을 제공하는 프리미엄 깔창 브랜드</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>빠른 링크</h4>
+                    <ul>
+                        <li><a href="#product">제품소개</a></li>
+                        <li><a href="#process">제작과정</a></li>
+                        <li><a href="#stores">매장안내</a></li>
+                        <li><a href="#contact">문의하기</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>고객지원</h4>
+                    <ul>
+                        <li><a href="tel:01048555991">010-4855-5991</a></li>
+                        <li><a href="#">카카오톡 @벨리코</a></li>
+                        <li>평일 9:00-18:00</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>회사정보</h4>
+                    <ul>
+                        <li>회사명: 벨리코</li>
+                        <li>주소: 대전광역시 동구</li>
+                        <li>대표: 이성수</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 벨리코(Vellico). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="public/js/main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Media tabs functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.dataset.tab;
+                
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Contact form submission (placeholder for dynamic functionality)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('문의가 접수되었습니다. 빠른 시일 내 연락드리겠습니다.');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html><!-- GitHub Pages build trigger Fri Sep 13 12:30:00 KST 2025 -->
+<!-- GitHub Pages rebuild trigger Sat Sep 13 13:20:28 KST 2025 -->

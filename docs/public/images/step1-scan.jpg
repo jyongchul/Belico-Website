@@ -1,0 +1,61 @@
+<!-- 벨리코 3D 족형 스캔 과정 -->
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="scanBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="scanBeam" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#74b9ff;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#0984e3;stop-opacity:0.3" />
+    </radialGradient>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#scanBg)"/>
+  
+  <!-- Title -->
+  <text x="250" y="25" font-family="Arial, sans-serif" font-size="16" fill="#2c5aa0" text-anchor="middle" font-weight="bold">1단계: 3D 족형 스캔</text>
+  
+  <!-- 3D Scanner Device -->
+  <rect x="50" y="50" width="150" height="120" fill="#2c5aa0" rx="10"/>
+  <rect x="60" y="60" width="130" height="40" fill="#74b9ff" rx="5"/>
+  <text x="125" y="75" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">벨리코</text>
+  <text x="125" y="90" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">3D Scanner</text>
+  
+  <!-- Scanning platform -->
+  <rect x="80" y="110" width="90" height="50" fill="#dee2e6" rx="5"/>
+  
+  <!-- Customer foot on platform -->
+  <path d="M100 130 Q130 125 150 135 Q155 145 150 155 Q130 165 110 170 Q100 165 95 155 Q90 145 95 135 Z" 
+        fill="#ffbe76" stroke="#2c5aa0" stroke-width="2"/>
+  
+  <!-- 3D Scan beams -->
+  <line x1="125" y1="60" x2="125" y2="150" stroke="#74b9ff" stroke-width="3" opacity="0.7"/>
+  <circle cx="125" cy="150" r="15" fill="url(#scanBeam)"/>
+  
+  <!-- Monitor Display -->
+  <rect x="280" y="60" width="180" height="120" fill="#1a1a1a" rx="8"/>
+  <rect x="290" y="70" width="160" height="100" fill="#333" rx="5"/>
+  
+  <!-- 3D Foot Model on Screen -->
+  <path d="M320 90 Q340 85 360 95 Q365 105 360 115 Q340 125 320 130 Q315 125 310 115 Q305 105 310 95 Z" 
+        fill="#74b9ff" stroke="#0984e3" stroke-width="2"/>
+  
+  <!-- Measurement points -->
+  <circle cx="325" cy="100" r="2" fill="#ff6b6b"/>
+  <circle cx="340" cy="95" r="2" fill="#ff6b6b"/>
+  <circle cx="355" cy="105" r="2" fill="#ff6b6b"/>
+  <circle cx="330" cy="120" r="2" fill="#ff6b6b"/>
+  
+  <!-- Data display -->
+  <text x="300" y="145" font-family="Arial, sans-serif" font-size="8" fill="#74b9ff">길이: 250mm</text>
+  <text x="300" y="155" font-family="Arial, sans-serif" font-size="8" fill="#74b9ff">폭: 95mm</text>
+  <text x="370" y="145" font-family="Arial, sans-serif" font-size="8" fill="#74b9ff">아치높이: 15mm</text>
+  <text x="370" y="155" font-family="Arial, sans-serif" font-size="8" fill="#74b9ff">발가락각도: 12°</text>
+  
+  <!-- Process indicator -->
+  <rect x="50" y="200" width="400" height="60" fill="white" rx="10" stroke="#2c5aa0" stroke-width="2"/>
+  <text x="250" y="220" font-family="Arial, sans-serif" font-size="12" fill="#2c5aa0" text-anchor="middle" font-weight="bold">고정밀 3D 스캐닝으로 개인별 족형 정보 수집</text>
+  <text x="250" y="240" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">• 발 길이, 폭, 아치 높이, 압력점 등 360도 전면 측정</text>
+  <text x="250" y="252" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">• 개인별 발 특성 데이터베이스 구축 (소요시간: 5분)</text>
+</svg>

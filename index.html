@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="public/js/languages.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -19,13 +20,28 @@
                 <span>BELICO</span>
             </div>
             <ul class="nav-menu">
-                <li><a href="index.html">홈</a></li>
-                <li><a href="products.html">제품소개</a></li>
-                <li><a href="dealers.html">전국 대리점</a></li>
-                <li><a href="reviews.html">이용후기</a></li>
-                <li><a href="reservation.html">예약하기</a></li>
-                <li><a href="#contact">문의하기</a></li>
+                <li><a href="index.html" data-text="nav_home">홈</a></li>
+                <li><a href="products.html" data-text="nav_products">제품소개</a></li>
+                <li><a href="dealers.html" data-text="nav_dealers">전국 대리점</a></li>
+                <li><a href="reviews.html" data-text="nav_reviews">이용후기</a></li>
+                <li><a href="reservation.html" data-text="nav_reservation">예약하기</a></li>
+                <li><a href="#contact" data-text="nav_contact">문의하기</a></li>
             </ul>
+
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <div class="current-language">🇰🇷 한국어</div>
+                <div class="language-dropdown">
+                    <a href="#" class="language-option active" data-lang="ko">🇰🇷 한국어</a>
+                    <a href="#" class="language-option" data-lang="en">🇺🇸 English</a>
+                    <a href="#" class="language-option" data-lang="ja">🇯🇵 日本語</a>
+                    <a href="#" class="language-option" data-lang="zh-CN">🇨🇳 简体中文</a>
+                    <a href="#" class="language-option" data-lang="zh-TW">🇹🇼 繁體中文</a>
+                    <a href="#" class="language-option" data-lang="vi">🇻🇳 Tiếng Việt</a>
+                    <a href="#" class="language-option" data-lang="es">🇪🇸 Español</a>
+                </div>
+            </div>
+
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -38,31 +54,154 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text" data-aos="fade-up">
-                <h1>당신만을 위한<br><span class="highlight">맞춤형 깔창</span></h1>
-                <p class="hero-subtitle">3D 스캔 기술과 첨단 장비로 제작하는<br>개인 맞춤형 인솔 솔루션</p>
-                <div class="hero-features">
-                    <div class="feature-item">
-                        <span class="feature-icon">🏥</span>
-                        <span>전문 상담</span>
+                <div class="hero-badge">
+                    <span class="badge-icon">🏆</span>
+                    <span data-text="hero_badge">의료진 인정 • 98% 고객 만족도</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="hero-problem" data-text="hero_problem">발 통증 때문에 고생하고 계신가요?</span>
+                    <span class="hero-solution" data-text="hero_solution">15분 만에 완성되는<br><span class="highlight">맞춤형 깔창</span>으로 해결하세요</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    <strong data-text="hero_subtitle_conditions">족저근막염 • 평발 • 무지외반증</strong><br>
+                    <span data-text="hero_subtitle_tech">의료기기급 3D 스캔 기술로 <span class="text-emphasis">0.1mm 정밀도</span>의 개인 맞춤형 깔창을 현장에서 즉석 제작</span>
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1,500+</div>
+                        <div class="stat-label" data-text="stat_cases">제작 경험</div>
                     </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📊</span>
-                        <span>정밀 분석</span>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label" data-text="stat_improvement">개선 효과</div>
                     </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">⚡</span>
-                        <span>즉석 제작</span>
+                    <div class="stat-item">
+                        <div class="stat-number">15분</div>
+                        <div class="stat-label" data-text="stat_completion">즉석 완성</div>
                     </div>
                 </div>
+
+                <div class="hero-tech-features">
+                    <h3 data-text="tech_title">벨리코 3대 핵심 기술</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <div class="tech-icon">🎯</div>
+                            <div class="tech-content">
+                                <h4 data-text="tech_heel">뒤꿈치 정렬 교정</h4>
+                                <p>Heel Alignment Correction</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">🏗️</div>
+                            <div class="tech-content">
+                                <h4 data-text="tech_arch">아치 서포트</h4>
+                                <p>Arch Support System</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">⚡</div>
+                            <div class="tech-content">
+                                <h4 data-text="tech_shock">충격흡수 & 압력분산</h4>
+                                <p>Shock Absorption & Pressure Distribution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="hero-cta">
-                    <a href="#contact" class="btn-primary">무료 상담 받기</a>
-                    <a href="tel:010-4855-5991" class="btn-secondary">📞 010-4855-5991</a>
+                    <a href="reservation.html" class="btn-primary-large">
+                        <span class="cta-icon">📅</span>
+                        <div class="cta-content">
+                            <div class="cta-main" data-text="cta_booking_main">무료 족부 분석 예약</div>
+                            <div class="cta-sub" data-text="cta_booking_sub">상담부터 제작까지 45분 완료</div>
+                        </div>
+                    </a>
+                    <a href="tel:010-4855-5991" class="btn-call">
+                        <span class="call-icon">📞</span>
+                        <div class="call-content">
+                            <div class="call-number">010-4855-5991</div>
+                            <div class="call-time" data-text="call_time">평일 09:00-18:00 즉시 상담</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hero-guarantee">
+                    <span class="guarantee-icon">✅</span>
+                    <span data-text="guarantee_text"><strong>만족 보장:</strong> 착용 후 불편하시면 100% 재제작</span>
                 </div>
             </div>
-            <div class="hero-image" data-aos="fade-left">
-                <img src="public/images/equipment/professional-case.jpg" alt="벨리코 족부 스캔 전문 장비 - Foot Scan 시스템">
+
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="hero-image-stack">
+                    <div class="main-image">
+                        <img src="public/images/equipment/professional-case.jpg" alt="벨리코 전문 맞춤형 깔창 - 알루미늄 케이스">
+                        <div class="image-overlay">
+                            <span class="overlay-text" data-text="professional_equipment">의료기기급 전문 장비</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-cards">
+                        <div class="floating-card pressure-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card-icon">📊</div>
+                            <div class="card-content">
+                                <h4 data-text="pressure_analysis">실시간 압력 분석</h4>
+                                <p data-text="pressure_desc">발바닥 압력을 실시간으로 측정하여 최적의 깔창 설계</p>
+                            </div>
+                        </div>
+
+                        <div class="floating-card tech-card" data-aos="fade-up" data-aos-delay="400">
+                            <div class="card-icon">🔬</div>
+                            <div class="card-content">
+                                <h4 data-text="scan_tech">3D 스캔 기술</h4>
+                                <p data-text="scan_desc">0.1mm 정밀도로 발 모양을 정확히 스캔</p>
+                            </div>
+                        </div>
+
+                        <div class="floating-card result-card" data-aos="fade-up" data-aos-delay="600">
+                            <div class="card-icon">🎯</div>
+                            <div class="card-content">
+                                <h4 data-text="instant_production">즉석 제작</h4>
+                                <p data-text="instant_desc">현장에서 바로 제작하여 즉시 착용 가능</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-video-preview" data-aos="fade-up" data-aos-delay="800">
+                    <div class="video-thumbnail">
+                        <img src="public/images/process/foot-scanning.jpg" alt="벨리코 족부 스캔 과정">
+                        <div class="play-button" onclick="openVideoModal()">
+                            <span>▶</span>
+                        </div>
+                        <div class="video-caption">
+                            <span>제작 과정 보기</span>
+                            <small>(2분 영상)</small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Background Elements -->
+        <div class="hero-background">
+            <div class="bg-pattern"></div>
+            <div class="bg-gradient"></div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal" style="display: none;">
+        <div class="video-modal-content">
+            <span class="video-close" onclick="closeVideoModal()">&times;</span>
+            <div class="video-container">
+                <p>실제 구현시 제작 과정 영상이 재생됩니다.</p>
+                <button onclick="closeVideoModal()" class="btn-primary">닫기</button>
+            </div>
+        </div>
+    </div>
     </section>
 
     <!-- Technology Section -->

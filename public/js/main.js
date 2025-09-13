@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
         once: true,
         offset: 100
     });
+
+    // Initialize language system
+    if (typeof initLanguageSystem === 'function') {
+        initLanguageSystem();
+    }
 });
 
 // Mobile Navigation Toggle
@@ -121,5 +126,98 @@ if (contactForm) {
         }, 2000);
     });
 }
+
+// Video Modal Functions
+function initVideoModal() {
+    const videoBtn = document.querySelector('.video-btn');
+    const videoModal = document.querySelector('.video-modal');
+    const closeBtn = document.querySelector('.close-modal');
+    const videoFrame = document.querySelector('.video-frame iframe');
+
+    if (videoBtn && videoModal && closeBtn) {
+        videoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Add video URL when modal opens
+            if (videoFrame && !videoFrame.src) {
+                videoFrame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+            }
+        });
+
+        closeBtn.addEventListener('click', function() {
+            videoModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+
+            // Remove video URL to stop playback
+            if (videoFrame) {
+                videoFrame.src = '';
+            }
+        });
+
+        // Close modal on backdrop click
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                if (videoFrame) {
+                    videoFrame.src = '';
+                }
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                videoModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                if (videoFrame) {
+                    videoFrame.src = '';
+                }
+            }
+        });
+    }
+}
+
+// Enhanced parallax effect for hero section
+function initHeroParallax() {
+    const heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallax = scrolled * 0.5;
+
+        if (scrolled < window.innerHeight) {
+            heroSection.style.transform = `translateY(${parallax}px)`;
+        }
+    });
+}
+
+// Floating cards hover enhancements
+function initFloatingCards() {
+    const floatingCards = document.querySelectorAll('.floating-card');
+
+    floatingCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.05)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(-5px) scale(1)';
+        });
+    });
+}
+
+// Initialize all hero enhancements
+document.addEventListener('DOMContentLoaded', function() {
+    // Small delay to ensure DOM is fully loaded
+    setTimeout(() => {
+        initVideoModal();
+        initHeroParallax();
+        initFloatingCards();
+    }, 100);
+});
 
 console.log('벨리코 웹사이트가 로드되었습니다.');

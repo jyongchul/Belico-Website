@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>벨리코 관리자 시스템 - BELICO Admin</title>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <!-- Admin Login Section -->
+    <section id="adminLogin" class="admin-login-section">
+        <div class="admin-container">
+            <div class="admin-login-card">
+                <div class="admin-header">
+                    <div class="admin-logo">
+                        <h2>벨리코</h2>
+                        <span>BELICO Admin</span>
+                    </div>
+                    <p>관리자 시스템</p>
+                </div>
+
+                <form id="adminLoginForm" class="admin-login-form">
+                    <div class="form-group">
+                        <label for="adminUsername">관리자 ID</label>
+                        <input type="text" id="adminUsername" name="username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminPassword">비밀번호</label>
+                        <input type="password" id="adminPassword" name="password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span class="checkmark"></span>
+                            로그인 상태 유지
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary admin-login-btn">로그인</button>
+                </form>
+
+                <div class="admin-footer-links">
+                    <a href="index.html">← 메인 사이트로 돌아가기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard Section (Hidden by default) -->
+    <section id="adminDashboard" class="admin-dashboard" style="display: none;">
+        <!-- Admin Navigation -->
+        <nav class="admin-nav">
+            <div class="admin-nav-container">
+                <div class="admin-nav-logo">
+                    <h3>벨리코 관리자</h3>
+                </div>
+                <ul class="admin-nav-menu">
+                    <li><a href="#" onclick="showDashboardSection('overview')" class="active">대시보드</a></li>
+                    <li><a href="#" onclick="showDashboardSection('reviews')">후기 관리</a></li>
+                    <li><a href="#" onclick="showDashboardSection('reservations')">예약 관리</a></li>
+                    <li><a href="#" onclick="showDashboardSection('dealers')">대리점 관리</a></li>
+                    <li><a href="#" onclick="showDashboardSection('content')">컨텐츠 관리</a></li>
+                    <li><a href="#" onclick="showDashboardSection('analytics')">방문자 분석</a></li>
+                </ul>
+                <button class="admin-logout-btn" onclick="adminLogout()">로그아웃</button>
+            </div>
+        </nav>
+
+        <!-- Dashboard Overview -->
+        <section id="overview" class="admin-section active">
+            <div class="admin-content">
+                <h2>대시보드 개요</h2>
+
+                <div class="admin-stats-grid">
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <h3>오늘 방문자</h3>
+                            <div class="stat-number">247</div>
+                            <div class="stat-change positive">+12% 어제 대비</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-content">
+                            <h3>신규 후기</h3>
+                            <div class="stat-number">8</div>
+                            <div class="stat-change positive">+3 이번 주</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-content">
+                            <h3>예약 대기</h3>
+                            <div class="stat-number">15</div>
+                            <div class="stat-change">처리 필요</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-content">
+                            <h3>상담 문의</h3>
+                            <div class="stat-number">23</div>
+                            <div class="stat-change">미답변 5건</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-chart-section">
+                    <div class="admin-chart-card">
+                        <h3>월별 방문자 현황</h3>
+                        <div id="visitorsChart" class="chart-placeholder">
+                            <p>차트가 여기에 표시됩니다</p>
+                            <p>실제 구현시 Chart.js 또는 다른 차트 라이브러리 사용</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activities">
+                    <h3>최근 활동</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">👤</div>
+                            <div class="activity-content">
+                                <p><strong>김○○님</strong>이 족저근막염 후기를 등록했습니다</p>
+                                <span class="activity-time">5분 전</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📞</div>
+                            <div class="activity-content">
+                                <p><strong>이○○님</strong>이 강남점 예약을 신청했습니다</p>
+                                <span class="activity-time">12분 전</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">💬</div>
+                            <div class="activity-content">
+                                <p><strong>박○○님</strong>이 상담 문의를 남겼습니다</p>
+                                <span class="activity-time">27분 전</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Management -->
+        <section id="reviews" class="admin-section">
+            <div class="admin-content">
+                <h2>후기 관리</h2>
+
+                <div class="admin-controls">
+                    <div class="search-controls">
+                        <input type="text" placeholder="후기 검색..." class="admin-search">
+                        <select class="admin-filter">
+                            <option value="all">전체 상태</option>
+                            <option value="pending">승인 대기</option>
+                            <option value="approved">승인됨</option>
+                            <option value="rejected">거부됨</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>작성자</th>
+                                <th>증상</th>
+                                <th>평점</th>
+                                <th>작성일</th>
+                                <th>상태</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>김○○</td>
+                                <td>족저근막염</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>2025.01.15</td>
+                                <td><span class="status pending">승인 대기</span></td>
+                                <td>
+                                    <button class="btn-small btn-success" onclick="approveReview(1)">승인</button>
+                                    <button class="btn-small btn-danger" onclick="rejectReview(1)">거부</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>이○○</td>
+                                <td>평발</td>
+                                <td>⭐⭐⭐⭐</td>
+                                <td>2025.01.14</td>
+                                <td><span class="status approved">승인됨</span></td>
+                                <td>
+                                    <button class="btn-small btn-primary" onclick="editReview(2)">수정</button>
+                                    <button class="btn-small btn-danger" onclick="deleteReview(2)">삭제</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservations Management -->
+        <section id="reservations" class="admin-section">
+            <div class="admin-content">
+                <h2>예약 관리</h2>
+
+                <div class="admin-controls">
+                    <div class="search-controls">
+                        <input type="text" placeholder="예약자 검색..." class="admin-search">
+                        <select class="admin-filter">
+                            <option value="all">전체 상태</option>
+                            <option value="pending">대기중</option>
+                            <option value="confirmed">확정</option>
+                            <option value="completed">완료</option>
+                            <option value="cancelled">취소</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>예약자</th>
+                                <th>연락처</th>
+                                <th>대리점</th>
+                                <th>예약일시</th>
+                                <th>상태</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>박○○</td>
+                                <td>010-1234-5678</td>
+                                <td>강남점</td>
+                                <td>2025.01.18 14:00</td>
+                                <td><span class="status pending">대기중</span></td>
+                                <td>
+                                    <button class="btn-small btn-success" onclick="confirmReservation(1)">확정</button>
+                                    <button class="btn-small btn-danger" onclick="cancelReservation(1)">취소</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dealers Management -->
+        <section id="dealers" class="admin-section">
+            <div class="admin-content">
+                <h2>대리점 관리</h2>
+
+                <div class="admin-controls">
+                    <button class="btn-primary" onclick="addNewDealer()">+ 새 대리점 추가</button>
+                </div>
+
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>대리점명</th>
+                                <th>지역</th>
+                                <th>주소</th>
+                                <th>연락처</th>
+                                <th>상태</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>벨리코 강남점</td>
+                                <td>서울</td>
+                                <td>서울특별시 강남구 테헤란로 123</td>
+                                <td>02-1234-5678</td>
+                                <td><span class="status approved">운영중</span></td>
+                                <td>
+                                    <button class="btn-small btn-primary" onclick="editDealer(1)">수정</button>
+                                    <button class="btn-small btn-danger" onclick="deleteDealer(1)">삭제</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Management -->
+        <section id="content" class="admin-section">
+            <div class="admin-content">
+                <h2>컨텐츠 관리</h2>
+
+                <div class="content-management-grid">
+                    <div class="content-card">
+                        <h3>메인 페이지</h3>
+                        <p>히어로 섹션, 소개 내용 관리</p>
+                        <button class="btn-primary" onclick="editMainContent()">편집</button>
+                    </div>
+
+                    <div class="content-card">
+                        <h3>제품 정보</h3>
+                        <p>제품 소개, 스펙 정보 관리</p>
+                        <button class="btn-primary" onclick="editProductContent()">편집</button>
+                    </div>
+
+                    <div class="content-card">
+                        <h3>이미지 갤러리</h3>
+                        <p>사이트 내 이미지 관리</p>
+                        <button class="btn-primary" onclick="editImages()">관리</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics -->
+        <section id="analytics" class="admin-section">
+            <div class="admin-content">
+                <h2>방문자 분석</h2>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>실시간 방문자</h3>
+                        <div class="analytics-number">34</div>
+                        <p>현재 접속중인 사용자</p>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>이번 달 총 방문</h3>
+                        <div class="analytics-number">8,247</div>
+                        <p>지난 달 대비 +15.2%</p>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>평균 체류시간</h3>
+                        <div class="analytics-number">3:42</div>
+                        <p>페이지당 평균 시간</p>
+                    </div>
+                </div>
+
+                <div class="analytics-chart-section">
+                    <div class="analytics-chart-card">
+                        <h3>페이지별 방문 통계</h3>
+                        <div id="pageViewsChart" class="chart-placeholder">
+                            <p>Google Analytics 또는 다른 분석 도구 연동 예정</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script src="public/js/admin.js"></script>
+</body>
+</html>

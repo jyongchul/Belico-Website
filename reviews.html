@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이용후기 - 벨리코 (BELICO) 맞춤형 깔창</title>
+    <meta name="description" content="벨리코 맞춤형 깔창을 경험한 고객들의 실제 후기와 치료 사례를 확인해보세요. 족저근막염, 평발, 무지외반증 개선 사례 공유">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <h2>벨리코</h2>
+                    <span>BELICO</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="products.html">제품소개</a></li>
+                <li><a href="dealers.html">전국 대리점</a></li>
+                <li><a href="reviews.html" class="active">이용후기</a></li>
+                <li><a href="reservation.html">예약하기</a></li>
+                <li><a href="index.html#contact">문의하기</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <h1>이용후기</h1>
+                <p>벨리코를 경험한 고객들의 생생한 후기를 확인해보세요</p>
+                <nav class="breadcrumb">
+                    <a href="index.html">홈</a> > <span>이용후기</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="review-stats">
+        <div class="container">
+            <div class="stats-grid" data-aos="fade-up">
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">고객 만족도</div>
+                    <div class="stat-description">2,000명 이상의 고객 조사</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,500+</div>
+                    <div class="stat-label">제작 경험</div>
+                    <div class="stat-description">누적 맞춤형 깔창 제작</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">96%</div>
+                    <div class="stat-label">재방문율</div>
+                    <div class="stat-description">고객 재방문 및 추천</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.8/5</div>
+                    <div class="stat-label">평균 평점</div>
+                    <div class="stat-description">고객 리뷰 평균 점수</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter & Search -->
+    <section class="review-filter">
+        <div class="container">
+            <div class="filter-container" data-aos="fade-up">
+                <h2>후기 찾기</h2>
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label>증상별</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" onclick="filterReviews('all')">전체</button>
+                            <button class="filter-btn" onclick="filterReviews('족저근막염')">족저근막염</button>
+                            <button class="filter-btn" onclick="filterReviews('평발')">평발</button>
+                            <button class="filter-btn" onclick="filterReviews('무지외반증')">무지외반증</button>
+                            <button class="filter-btn" onclick="filterReviews('당뇨발')">당뇨발</button>
+                            <button class="filter-btn" onclick="filterReviews('기타')">기타</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>평점별</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn" onclick="filterByRating(5)">⭐⭐⭐⭐⭐</button>
+                            <button class="filter-btn" onclick="filterByRating(4)">⭐⭐⭐⭐</button>
+                            <button class="filter-btn" onclick="filterByRating(3)">⭐⭐⭐</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Reviews -->
+    <section class="featured-reviews">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>추천 후기</h2>
+                <p>특별히 도움이 되었던 고객들의 이야기</p>
+            </div>
+
+            <div class="featured-grid">
+                <div class="featured-review" data-aos="fade-up" data-aos-delay="100">
+                    <div class="review-header">
+                        <div class="review-profile">
+                            <div class="profile-avatar">김○○</div>
+                            <div class="profile-info">
+                                <h4>김○○님</h4>
+                                <span>족저근막염 / 3개월 사용</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <blockquote>
+                            "10년 넘게 족저근막염으로 고생했는데, 벨리코 맞춤형 깔창을 착용한 후 3개월 만에 통증이 90% 이상 사라졌습니다.
+                            아침에 일어날 때 느끼던 극심한 통증이 없어져서 일상생활이 완전히 달라졌어요. 정말 감사합니다!"
+                        </blockquote>
+                    </div>
+                    <div class="review-images">
+                        <img src="public/images/reviews/before-after-1.jpg" alt="족저근막염 개선 사례">
+                    </div>
+                    <div class="review-meta">
+                        <span>📍 벨리코 강남점</span>
+                        <span>📅 2025.06.15</span>
+                        <span>👍 도움돼요 124</span>
+                    </div>
+                </div>
+
+                <div class="featured-review" data-aos="fade-up" data-aos-delay="200">
+                    <div class="review-header">
+                        <div class="review-profile">
+                            <div class="profile-avatar">이○○</div>
+                            <div class="profile-info">
+                                <h4>이○○님</h4>
+                                <span>평발 / 6개월 사용</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <blockquote>
+                            "평발 때문에 오래 서 있거나 걸으면 발과 다리가 너무 아팠는데, 맞춤형 깔창 덕분에 하루 종일 서서 일해도
+                            피로감이 확실히 줄었습니다. 6개월 사용한 지금은 발 모양도 많이 좋아졌어요. 가족들에게도 추천했습니다!"
+                        </blockquote>
+                    </div>
+                    <div class="review-images">
+                        <img src="public/images/reviews/before-after-2.jpg" alt="평발 개선 사례">
+                    </div>
+                    <div class="review-meta">
+                        <span>📍 벨리코 부산점</span>
+                        <span>📅 2025.05.22</span>
+                        <span>👍 도움돼요 98</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Grid -->
+    <section class="reviews-grid-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>고객 후기</h2>
+                <p>벨리코 고객들의 실제 경험담</p>
+            </div>
+
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- Review 1 -->
+                <div class="review-card" data-category="무지외반증" data-rating="5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">박○○</div>
+                            <div class="reviewer-details">
+                                <h4>박○○님</h4>
+                                <span>무지외반증</span>
+                            </div>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="review-text">
+                        "무지외반증으로 하이힐은 물론 일반 신발도 신기 힘들었는데, 맞춤형 깔창을 사용한 후 통증이 많이 줄었어요.
+                        발가락 정렬도 조금씩 좋아지고 있습니다."
+                    </div>
+                    <div class="review-meta">
+                        <span>📅 2025.07.10</span>
+                        <span>📍 대구점</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card" data-category="족저근막염" data-rating="5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">최○○</div>
+                            <div class="reviewer-details">
+                                <h4>최○○님</h4>
+                                <span>족저근막염</span>
+                            </div>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="review-text">
+                        "마라톤을 즐기는데 족저근막염 때문에 뛸 수가 없었어요. 벨리코 스포츠용 깔창으로 다시 마라톤을 할 수 있게 됐습니다.
+                        정말 고맙습니다!"
+                    </div>
+                    <div class="review-meta">
+                        <span>📅 2025.06.28</span>
+                        <span>📍 홍대점</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card" data-category="평발" data-rating="4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">정○○</div>
+                            <div class="reviewer-details">
+                                <h4>정○○님</h4>
+                                <span>평발</span>
+                            </div>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="review-text">
+                        "평발로 인한 발 피로감이 심했는데, 깔창 착용 후 확실히 개선됐어요. 처음엔 적응하는데 시간이 좀 걸렸지만
+                        지금은 없으면 안 되는 필수품입니다."
+                    </div>
+                    <div class="review-meta">
+                        <span>📅 2025.06.15</span>
+                        <span>📍 수원점</span>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="review-card" data-category="당뇨발" data-rating="5" data-aos="fade-up" data-aos-delay="400">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">한○○</div>
+                            <div class="reviewer-details">
+                                <h4>한○○님</h4>
+                                <span>당뇨발</span>
+                            </div>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="review-text">
+                        "당뇨 합병증으로 발 감각이 둔해져서 걱정이 많았는데, 벨리코 깔창이 압력을 분산시켜 줘서 안전하게 걸을 수 있어요.
+                        의료진도 만족한다고 하네요."
+                    </div>
+                    <div class="review-meta">
+                        <span>📅 2025.05.30</span>
+                        <span>📍 송도점</span>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="review-card" data-category="기타" data-rating="4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">장○○</div>
+                            <div class="reviewer-details">
+                                <h4>장○○님</h4>
+                                <span>일반 보행 개선</span>
+                            </div>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="review-text">
+                        "특별한 질환은 없었지만 오래 서 있는 일을 해서 발이 항상 아팠어요. 맞춤형 깔창 덕분에
+                        하루 종일 서 있어도 훨씬 편해졌습니다."
+                    </div>
+                    <div class="review-meta">
+                        <span>📅 2025.05.18</span>
+                        <span>📍 강남점</span>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="review-card" data-category="족저근막염" data-rating="5" data-aos="fade-up" data-aos-delay="600">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">윤○○</div>
+                            <div class="reviewer-details">
+                                <h4>윤○○님</h4>
+                                <span>족저근막염</span>
+                            </div>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="review-text">
+                        "병원에서도 해결되지 않던 족저근막염이 벨리코 깔창으로 많이 좋아졌어요.
+                        15분만에 현장에서 바로 만들어주는 것도 신기했습니다."
+                    </div>
+                    <div class="review-meta">
+                        <span>📅 2025.04.25</span>
+                        <span>📍 해운대점</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-section" data-aos="fade-up">
+                <button class="btn-outline" onclick="loadMoreReviews()">더 많은 후기 보기</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Form -->
+    <section class="review-form-section">
+        <div class="container">
+            <div class="form-container" data-aos="fade-up">
+                <h2>후기 작성하기</h2>
+                <p>벨리코 서비스를 이용하신 소중한 경험을 공유해주세요</p>
+
+                <form class="review-form" id="reviewForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reviewerName">성함 <span class="required">*</span></label>
+                            <input type="text" id="reviewerName" name="reviewerName" placeholder="김○○" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewCategory">이용 서비스 <span class="required">*</span></label>
+                            <select id="reviewCategory" name="reviewCategory" required>
+                                <option value="">선택해주세요</option>
+                                <option value="족저근막염">족저근막염 치료</option>
+                                <option value="평발">평발 교정</option>
+                                <option value="무지외반증">무지외반증 완화</option>
+                                <option value="당뇨발">당뇨발 관리</option>
+                                <option value="스포츠">스포츠용 깔창</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="visitedStore">방문 매장</label>
+                            <select id="visitedStore" name="visitedStore">
+                                <option value="">선택해주세요</option>
+                                <option value="강남점">벨리코 강남점</option>
+                                <option value="홍대점">벨리코 홍대점</option>
+                                <option value="부산점">벨리코 해운대점</option>
+                                <option value="대구점">벨리코 동성로점</option>
+                                <option value="수원점">벨리코 수원점</option>
+                                <option value="송도점">벨리코 송도점</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewRating">평점 <span class="required">*</span></label>
+                            <div class="rating-input">
+                                <input type="radio" id="star5" name="rating" value="5" required>
+                                <label for="star5">⭐⭐⭐⭐⭐</label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4">⭐⭐⭐⭐</label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3">⭐⭐⭐</label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2">⭐⭐</label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1">⭐</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviewContent">후기 내용 <span class="required">*</span></label>
+                        <textarea id="reviewContent" name="reviewContent" rows="5"
+                                  placeholder="벨리코 서비스를 이용하신 경험을 자세히 작성해주세요. 다른 고객들에게 도움이 되는 솔직한 후기를 부탁드립니다." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviewImages">사진 첨부 (선택)</label>
+                        <input type="file" id="reviewImages" name="reviewImages" multiple accept="image/*">
+                        <small>최대 3장까지 업로드 가능합니다.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required>
+                            <span class="checkmark"></span>
+                            개인정보 수집 및 이용에 동의합니다. <span class="required">*</span>
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-outline" onclick="resetForm()">초기화</button>
+                        <button type="submit" class="btn-primary">후기 등록</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>벨리코 (BELICO)</h3>
+                    <p>개인 맞춤형 깔창 전문 서비스</p>
+                    <p>📞 010-4855-5991</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>서비스</h4>
+                        <ul>
+                            <li><a href="products.html">맞춤형 깔창 제작</a></li>
+                            <li><a href="index.html#process">족부 분석</a></li>
+                            <li><a href="index.html#contact">전문 상담</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>고객 지원</h4>
+                        <ul>
+                            <li><a href="dealers.html">전국 대리점</a></li>
+                            <li><a href="reviews.html">이용후기</a></li>
+                            <li><a href="index.html#contact">문의하기</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 벨리코 (BELICO). 모든 권리 보유.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="public/js/reviews.js"></script>
+    <script src="public/js/main.js"></script>
+</body>
+</html>

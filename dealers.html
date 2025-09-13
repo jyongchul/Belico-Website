@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전국 대리점 - 벨리코 (BELICO) 맞춤형 깔창</title>
+    <meta name="description" content="벨리코 맞춤형 깔창을 경험할 수 있는 전국 대리점을 찾아보세요. 가까운 지역의 전문 상담사와 만나보실 수 있습니다.">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <h2>벨리코</h2>
+                    <span>BELICO</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="products.html">제품소개</a></li>
+                <li><a href="dealers.html" class="active">전국 대리점</a></li>
+                <li><a href="reviews.html">이용후기</a></li>
+                <li><a href="reservation.html">예약하기</a></li>
+                <li><a href="index.html#contact">문의하기</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <h1>전국 대리점</h1>
+                <p>가까운 벨리코 대리점에서 전문 상담을 받아보세요</p>
+                <nav class="breadcrumb">
+                    <a href="index.html">홈</a> > <span>전국 대리점</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filter -->
+    <section class="dealer-search">
+        <div class="container">
+            <div class="search-box" data-aos="fade-up">
+                <h2>대리점 찾기</h2>
+                <div class="search-form">
+                    <div class="search-input-group">
+                        <input type="text" id="dealerSearch" placeholder="지역명을 입력하세요 (예: 서울, 부산, 대구)">
+                        <button class="search-btn" onclick="searchDealers()">검색</button>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterByRegion('all')">전체</button>
+                        <button class="filter-btn" onclick="filterByRegion('서울')">서울</button>
+                        <button class="filter-btn" onclick="filterByRegion('경기')">경기</button>
+                        <button class="filter-btn" onclick="filterByRegion('부산')">부산</button>
+                        <button class="filter-btn" onclick="filterByRegion('대구')">대구</button>
+                        <button class="filter-btn" onclick="filterByRegion('인천')">인천</button>
+                        <button class="filter-btn" onclick="filterByRegion('광주')">광주</button>
+                        <button class="filter-btn" onclick="filterByRegion('대전')">대전</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container" data-aos="fade-up">
+                <h3>지도에서 찾기</h3>
+                <div id="map" class="dealer-map">
+                    <!-- Google Maps will be loaded here -->
+                    <div class="map-placeholder">
+                        <p>지도를 불러오는 중입니다...</p>
+                        <div class="map-loading"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dealers List -->
+    <section class="dealers-list">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>대리점 목록</h2>
+                <p>전국 각지의 벨리코 전문 대리점을 확인하세요</p>
+            </div>
+
+            <div class="dealers-grid" id="dealersGrid">
+                <!-- Seoul Dealers -->
+                <div class="dealer-card" data-region="서울" data-aos="fade-up" data-aos-delay="100">
+                    <div class="dealer-header">
+                        <h3>벨리코 강남점</h3>
+                        <span class="dealer-badge">프리미엄</span>
+                    </div>
+                    <div class="dealer-info">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>서울특별시 강남구 테헤란로 123</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <span>02-1234-5678</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span>평일 09:00-18:00, 토요일 09:00-15:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🚇</span>
+                            <span>강남역 2번 출구 도보 5분</span>
+                        </div>
+                    </div>
+                    <div class="dealer-features">
+                        <span class="feature-tag">3D 스캔 가능</span>
+                        <span class="feature-tag">주차 가능</span>
+                        <span class="feature-tag">당일 제작</span>
+                    </div>
+                    <div class="dealer-actions">
+                        <button class="btn-outline" onclick="openKakaoChat('강남점')">카카오톡 상담</button>
+                        <button class="btn-primary" onclick="makeReservation('강남점')">예약하기</button>
+                    </div>
+                </div>
+
+                <div class="dealer-card" data-region="서울" data-aos="fade-up" data-aos-delay="200">
+                    <div class="dealer-header">
+                        <h3>벨리코 홍대점</h3>
+                        <span class="dealer-badge">신규</span>
+                    </div>
+                    <div class="dealer-info">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>서울특별시 마포구 홍익로 456</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <span>02-2345-6789</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span>평일 10:00-19:00, 토요일 10:00-16:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🚇</span>
+                            <span>홍대입구역 3번 출구 도보 3분</span>
+                        </div>
+                    </div>
+                    <div class="dealer-features">
+                        <span class="feature-tag">3D 스캔 가능</span>
+                        <span class="feature-tag">당일 제작</span>
+                    </div>
+                    <div class="dealer-actions">
+                        <button class="btn-outline" onclick="openKakaoChat('홍대점')">카카오톡 상담</button>
+                        <button class="btn-primary" onclick="makeReservation('홍대점')">예약하기</button>
+                    </div>
+                </div>
+
+                <!-- Busan Dealers -->
+                <div class="dealer-card" data-region="부산" data-aos="fade-up" data-aos-delay="300">
+                    <div class="dealer-header">
+                        <h3>벨리코 해운대점</h3>
+                        <span class="dealer-badge">프리미엄</span>
+                    </div>
+                    <div class="dealer-info">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>부산광역시 해운대구 해운대해변로 789</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <span>051-3456-7890</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span>평일 09:00-18:00, 토요일 09:00-15:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🚇</span>
+                            <span>해운대역 1번 출구 도보 10분</span>
+                        </div>
+                    </div>
+                    <div class="dealer-features">
+                        <span class="feature-tag">3D 스캔 가능</span>
+                        <span class="feature-tag">주차 가능</span>
+                        <span class="feature-tag">당일 제작</span>
+                        <span class="feature-tag">휠체어 접근</span>
+                    </div>
+                    <div class="dealer-actions">
+                        <button class="btn-outline" onclick="openKakaoChat('해운대점')">카카오톡 상담</button>
+                        <button class="btn-primary" onclick="makeReservation('해운대점')">예약하기</button>
+                    </div>
+                </div>
+
+                <!-- Daegu Dealers -->
+                <div class="dealer-card" data-region="대구" data-aos="fade-up" data-aos-delay="400">
+                    <div class="dealer-header">
+                        <h3>벨리코 동성로점</h3>
+                        <span class="dealer-badge">인기</span>
+                    </div>
+                    <div class="dealer-info">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>대구광역시 중구 동성로 101</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <span>053-4567-8901</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span>평일 09:30-18:30, 토요일 09:30-16:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🚇</span>
+                            <span>중앙로역 2번 출구 도보 7분</span>
+                        </div>
+                    </div>
+                    <div class="dealer-features">
+                        <span class="feature-tag">3D 스캔 가능</span>
+                        <span class="feature-tag">당일 제작</span>
+                        <span class="feature-tag">주차 가능</span>
+                    </div>
+                    <div class="dealer-actions">
+                        <button class="btn-outline" onclick="openKakaoChat('동성로점')">카카오톡 상담</button>
+                        <button class="btn-primary" onclick="makeReservation('동성로점')">예약하기</button>
+                    </div>
+                </div>
+
+                <!-- More dealers can be added here -->
+                <div class="dealer-card" data-region="경기" data-aos="fade-up" data-aos-delay="500">
+                    <div class="dealer-header">
+                        <h3>벨리코 수원점</h3>
+                        <span class="dealer-badge">추천</span>
+                    </div>
+                    <div class="dealer-info">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>경기도 수원시 영통구 광교로 202</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <span>031-5678-9012</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span>평일 09:00-18:00, 토요일 09:00-15:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🚗</span>
+                            <span>광교중앙역 도보 5분, 주차장 완비</span>
+                        </div>
+                    </div>
+                    <div class="dealer-features">
+                        <span class="feature-tag">3D 스캔 가능</span>
+                        <span class="feature-tag">주차 가능</span>
+                        <span class="feature-tag">당일 제작</span>
+                    </div>
+                    <div class="dealer-actions">
+                        <button class="btn-outline" onclick="openKakaoChat('수원점')">카카오톡 상담</button>
+                        <button class="btn-primary" onclick="makeReservation('수원점')">예약하기</button>
+                    </div>
+                </div>
+
+                <div class="dealer-card" data-region="인천" data-aos="fade-up" data-aos-delay="600">
+                    <div class="dealer-header">
+                        <h3>벨리코 송도점</h3>
+                        <span class="dealer-badge">신규</span>
+                    </div>
+                    <div class="dealer-info">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>인천광역시 연수구 송도동 303</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <span>032-6789-0123</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🕒</span>
+                            <span>평일 10:00-19:00, 토요일 10:00-16:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🚇</span>
+                            <span>센트럴파크역 4번 출구 도보 8분</span>
+                        </div>
+                    </div>
+                    <div class="dealer-features">
+                        <span class="feature-tag">3D 스캔 가능</span>
+                        <span class="feature-tag">당일 제작</span>
+                    </div>
+                    <div class="dealer-actions">
+                        <button class="btn-outline" onclick="openKakaoChat('송도점')">카카오톡 상담</button>
+                        <button class="btn-primary" onclick="makeReservation('송도점')">예약하기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <h3>검색 결과가 없습니다</h3>
+                <p>다른 지역명으로 검색해보시거나 전체 목록을 확인해주세요.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dealer Inquiry -->
+    <section class="dealer-inquiry">
+        <div class="container">
+            <div class="inquiry-content" data-aos="fade-up">
+                <h2>대리점 개설 문의</h2>
+                <p>벨리코와 함께 사업을 시작하고 싶으신가요?</p>
+                <div class="inquiry-features">
+                    <div class="inquiry-feature">
+                        <div class="feature-icon">💼</div>
+                        <h4>사업 지원</h4>
+                        <p>창업 자금 지원부터 운영 노하우까지</p>
+                    </div>
+                    <div class="inquiry-feature">
+                        <div class="feature-icon">🎯</div>
+                        <h4>마케팅 지원</h4>
+                        <p>브랜드 홍보 및 고객 유치 지원</p>
+                    </div>
+                    <div class="inquiry-feature">
+                        <div class="feature-icon">🛠️</div>
+                        <h4>기술 지원</h4>
+                        <p>전문 장비 및 기술 교육 제공</p>
+                    </div>
+                </div>
+                <div class="inquiry-buttons">
+                    <button class="btn-primary" onclick="openKakaoChat('대리점개설')">대리점 개설 문의</button>
+                    <a href="tel:010-4855-5991" class="btn-secondary">📞 010-4855-5991</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>벨리코 (BELICO)</h3>
+                    <p>개인 맞춤형 깔창 전문 서비스</p>
+                    <p>📞 010-4855-5991</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>서비스</h4>
+                        <ul>
+                            <li><a href="products.html">맞춤형 깔창 제작</a></li>
+                            <li><a href="index.html#process">족부 분석</a></li>
+                            <li><a href="index.html#contact">전문 상담</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>고객 지원</h4>
+                        <ul>
+                            <li><a href="dealers.html">전국 대리점</a></li>
+                            <li><a href="reviews.html">이용후기</a></li>
+                            <li><a href="index.html#contact">문의하기</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 벨리코 (BELICO). 모든 권리 보유.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
+    <script src="public/js/dealers.js"></script>
+    <script src="public/js/main.js"></script>
+</body>
+</html>
